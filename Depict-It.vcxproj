@@ -130,12 +130,14 @@
     <ClInclude Include="Header Files\grayscale.h" />
     <ClInclude Include="Header Files\image.h" />
     <ClInclude Include="Header Files\lodepng.h" />
+    <ClInclude Include="Header Files\reduce.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\grayscale.c" />
     <ClCompile Include="Source Files\image.c" />
     <ClCompile Include="Source Files\lodepng.c" />
     <ClCompile Include="Source Files\main.c" />
+    <ClCompile Include="Source Files\reduce.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
