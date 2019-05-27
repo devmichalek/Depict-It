@@ -2,12 +2,12 @@
 Combination of image processing algorithms.
 
 ## Reducing Colors ([Francis G. Loch Article](https://www.dfstudios.co.uk/articles/programming/image-programming-algorithms/image-processing-algorithms-part-1-finding-nearest-colour/) & [Wikipedia Article](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_palettes#6-bit_RGB))
-![mandarin](https://user-images.githubusercontent.com/19840443/58380806-e8059980-7fb5-11e9-8a42-4f583431ce64.png)
-![3bit_rgb](https://user-images.githubusercontent.com/19840443/58380799-e6d46c80-7fb5-11e9-8358-62debd9b29bc.png)
-![6bit_rgb](https://user-images.githubusercontent.com/19840443/58380801-e76d0300-7fb5-11e9-8874-d16462dd036b.png)
-![9bit_rgb](https://user-images.githubusercontent.com/19840443/58380802-e76d0300-7fb5-11e9-9056-9e9b3d730e1a.png)
-![12bit_rgb](https://user-images.githubusercontent.com/19840443/58380803-e8059980-7fb5-11e9-8ada-da7680a777a1.png)
-![15bit_rgb](https://user-images.githubusercontent.com/19840443/58380804-e8059980-7fb5-11e9-8c5c-4377ba0053ea.png)
+![parrot](https://user-images.githubusercontent.com/19840443/58425141-5f602980-8099-11e9-9e37-45c272ec4029.png)
+![3bit_rgb](https://user-images.githubusercontent.com/19840443/58425134-5e2efc80-8099-11e9-9a6e-fc75342079a9.png)
+![6bit_rgb](https://user-images.githubusercontent.com/19840443/58425135-5e2efc80-8099-11e9-8a87-f7340d3f8a0f.png)
+![9bit_rgb](https://user-images.githubusercontent.com/19840443/58425136-5ec79300-8099-11e9-96b3-78b813e2f161.png)
+![12bit_rgb](https://user-images.githubusercontent.com/19840443/58425266-aea65a00-8099-11e9-825f-d641333f0dee.png)
+![15bit_rgb](https://user-images.githubusercontent.com/19840443/58425139-5ec79300-8099-11e9-93c9-b5e021e9b7aa.png)
 
 ## Grayscale Conversion ([Tanner Helland Article](http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/))
 ![input](https://user-images.githubusercontent.com/19840443/58327282-7b609280-7e2f-11e9-9bcd-e657349b6896.png)
