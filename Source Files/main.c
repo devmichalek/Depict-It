@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-	//grayscale_test("balls.png");
-	reduce_test("mandarin.png");
+	grayscale_test("clown.png");
+	//reduce_test("parrot.png");
 	return 0;
 }
