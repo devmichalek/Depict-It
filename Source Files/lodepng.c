@@ -125,15 +125,6 @@ Example: if(!uivector_resizev(&frequencies_ll, 286, 0)) ERROR_BREAK(83);
   return;\
 }
 
-/*
-About uivector, ucvector and string:
--All of them wrap dynamic arrays or text strings in a similar way.
--LodePNG was originally written in C++. The vectors replace the std::vectors that were used in the C++ version.
--The string tools are made to avoid problems with compilers that declare things like strncat as deprecated.
--They're not used in the interface, only internally in this file as static functions.
--As with many other structs in this file, the init and cleanup functions serve as ctor and dtor.
-*/
-
 #ifdef LODEPNG_COMPILE_ZLIB
 /*dynamic vector of unsigned ints*/
 typedef struct uivector {
@@ -466,17 +457,6 @@ typedef struct HuffmanTree {
   unsigned maxbitlen; /*maximum number of bits a single code can get*/
   unsigned numcodes; /*number of symbols in the alphabet = number of codes*/
 } HuffmanTree;
-
-/*function used for debug purposes to draw the tree in ascii art with C++*/
-/*
-static void HuffmanTree_draw(HuffmanTree* tree) {
-  std::cout << "tree. length: " << tree->numcodes << " maxbitlen: " << tree->maxbitlen << std::endl;
-  for(size_t i = 0; i != tree->tree1d.size; ++i) {
-    if(tree->lengths.data[i])
-      std::cout << i << " " << tree->tree1d.data[i] << " " << tree->lengths.data[i] << std::endl;
-  }
-  std::cout << std::endl;
-}*/
 
 static void HuffmanTree_init(HuffmanTree* tree) {
   tree->tree2d = 0;
@@ -2399,8 +2379,6 @@ void lodepng_palette_clear(LodePNGColorMode* info) {
 unsigned lodepng_palette_add(LodePNGColorMode* info,
                              unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
   unsigned char* data;
-  /*the same resize technique as C++ std::vectors is used, and here it's made so that for a palette with
-  the max of 256 colors, it'll have the exact alloc size*/
   if(!info->palette) /*allocate palette if empty*/ {
     /*room for 256 colors with 4 bytes each*/
     data = (unsigned char*)lodepng_realloc(info->palette, 1024);
@@ -3259,18 +3237,6 @@ void lodepng_color_profile_init(LodePNGColorProfile* profile) {
   profile->bits = 1;
   profile->numpixels = 0;
 }
-
-/*function used for debug purposes with C++*/
-/*void printColorProfile(LodePNGColorProfile* p) {
-  std::cout << "colored: " << (int)p->colored << ", ";
-  std::cout << "key: " << (int)p->key << ", ";
-  std::cout << "key_r: " << (int)p->key_r << ", ";
-  std::cout << "key_g: " << (int)p->key_g << ", ";
-  std::cout << "key_b: " << (int)p->key_b << ", ";
-  std::cout << "alpha: " << (int)p->alpha << ", ";
-  std::cout << "numcolors: " << (int)p->numcolors << ", ";
-  std::cout << "bits: " << (int)p->bits << std::endl;
-}*/
 
 /*Returns how many bits needed to represent given value (max 8 bit)*/
 static unsigned getValueRequiredBits(unsigned char value) {
@@ -4985,7 +4951,6 @@ static void filterScanline(unsigned char* out, const unsigned char* scanline, co
   }
 }
 
-/* log2 approximation. A slight bit faster than std::log. */
 static float flog2(float f) {
   float result = 0;
   while(f > 32) { result += 4; f /= 16; }
