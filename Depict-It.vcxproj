@@ -127,17 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Header Files\error_diffusion.h" />
     <ClInclude Include="Header Files\grayscale.h" />
     <ClInclude Include="Header Files\image.h" />
+    <ClInclude Include="Header Files\inversion.h" />
     <ClInclude Include="Header Files\lodepng.h" />
     <ClInclude Include="Header Files\reduce.h" />
+    <ClInclude Include="Header Files\solarisation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source Files\error_diffusion.c" />
     <ClCompile Include="Source Files\grayscale.c" />
     <ClCompile Include="Source Files\image.c" />
+    <ClCompile Include="Source Files\inversion.c" />
     <ClCompile Include="Source Files\lodepng.c" />
     <ClCompile Include="Source Files\main.c" />
     <ClCompile Include="Source Files\reduce.c" />
+    <ClCompile Include="Source Files\solarisation.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
