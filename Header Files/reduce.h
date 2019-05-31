@@ -1,22 +1,12 @@
 #ifndef __REDUCE_H_
 #define __REDUCE_H_
 
-extern const float RGB_SQR_TABLE[6];
-
 /*Find closest reduced color*/
 void find_closest_color
 (unsigned char*, unsigned char*, unsigned char*, unsigned);
 
-/*Find closest even reduced color*/
-void find_closest_even_color
-(unsigned char*, unsigned char*, unsigned char*, unsigned);
-
-/*Reduce to 2 to the power of n colors*/
-int reduce_to_n_colors
-(unsigned char**, unsigned, unsigned, int);
-
-/*Reduce to 2 to the power of n (even) colors*/
-int reduce_to_n_even_colors
+/*Reduce to n (>= 2) to the power of 3 colors*/
+int reduce_to_n_to_3_colors
 (unsigned char**, unsigned, unsigned, int);
 
 /*Reduce Test*/
