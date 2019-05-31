@@ -34,18 +34,23 @@ int contrast_test
 	char buffer[1024];
 
 	// Plus.
-	load_image(filename, &image, &width, &height);
-	contrast(&image, width, height, 128);
-	sprintf(buffer, "contrast_plus_%s\0", filename);
-	save_image(buffer, image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		contrast(&image, width, height, 128);
+		sprintf(buffer, "contrast_plus_%s\0", filename);
+		save_image(buffer, image, width, height);
+		destroy_image(&image);
+	}
+	
 
 	// Minus.
-	load_image(filename, &image, &width, &height);
-	contrast(&image, width, height, -128);
-	sprintf(buffer, "contrast_minus_%s\0", filename);
-	save_image(buffer, image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		contrast(&image, width, height, -128);
+		sprintf(buffer, "contrast_minus_%s\0", filename);
+		save_image(buffer, image, width, height);
+		destroy_image(&image);
+	}
 
 	return 0;
 }

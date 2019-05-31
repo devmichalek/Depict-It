@@ -135,60 +135,87 @@ int grayscale_test
 	unsigned char* image = NULL;
 
 	// Grayscale Average.
-	load_image(filename, &image, &width, &height);
-	grayscale_averaging(&image, width, height, 3.0f);
-	save_image("average.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_averaging(&image, width, height, 3.0f);
+		save_image("average.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	// Grayscale Luminance.
-	load_image(filename, &image, &width, &height);
-	grayscale_luminance(&image, width, height, 0.3f, 0.59f, 0.11f);
-	save_image("luminance.png", image, width, height);
-	destroy_image(&image);
-	load_image(filename, &image, &width, &height);
-	grayscale_luminance(&image, width, height, 0.2126f, 0.7152f, 0.0722f);
-	save_image("luminance_ITU-R.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_luminance(&image, width, height, 0.3f, 0.59f, 0.11f);
+		save_image("luminance.png", image, width, height);
+		destroy_image(&image);
+	}
+
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_luminance(&image, width, height, 0.2126f, 0.7152f, 0.0722f);
+		save_image("luminance_ITU-R.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	// Grayscale Desaturation.
-	load_image(filename, &image, &width, &height);
-	grayscale_desaturation(&image, width, height);
-	save_image("desaturation.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_desaturation(&image, width, height);
+		save_image("desaturation.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	// Grayscale Decomposition.
-	load_image(filename, &image, &width, &height);
-	grayscale_decomposition(&image, width, height, minRGB);
-	save_image("decomposition_min.png", image, width, height);
-	destroy_image(&image);
-	load_image(filename, &image, &width, &height);
-	grayscale_decomposition(&image, width, height, maxRGB);
-	save_image("decomposition_max.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_decomposition(&image, width, height, minRGB);
+		save_image("decomposition_min.png", image, width, height);
+		destroy_image(&image);
+	}
+	
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_decomposition(&image, width, height, maxRGB);
+		save_image("decomposition_max.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	// Grayscale Single Channel.
-	load_image(filename, &image, &width, &height);
-	grayscale_single_channel(&image, width, height, 0);
-	save_image("single_channel_red.png", image, width, height);
-	destroy_image(&image);
-	load_image(filename, &image, &width, &height);
-	grayscale_single_channel(&image, width, height, 1);
-	save_image("single_channel_green.png", image, width, height);
-	destroy_image(&image);
-	load_image(filename, &image, &width, &height);
-	grayscale_single_channel(&image, width, height, 2);
-	save_image("single_channel_blue.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_single_channel(&image, width, height, 0);
+		save_image("single_channel_red.png", image, width, height);
+		destroy_image(&image);
+	}
+
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_single_channel(&image, width, height, 1);
+		save_image("single_channel_green.png", image, width, height);
+		destroy_image(&image);
+	}
+
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_single_channel(&image, width, height, 2);
+		save_image("single_channel_blue.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	// Grayscale Shades.
-	load_image(filename, &image, &width, &height);
-	grayscale_shades(&image, width, height, 4);
-	save_image("shades_4.png", image, width, height);
-	destroy_image(&image);
-	load_image(filename, &image, &width, &height);
-	grayscale_shades(&image, width, height, 16);
-	save_image("shades_16.png", image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_shades(&image, width, height, 4);
+		save_image("shades_4.png", image, width, height);
+		destroy_image(&image);
+	}
+	
+	if (!load_image(filename, &image, &width, &height))
+	{
+		grayscale_shades(&image, width, height, 16);
+		save_image("shades_16.png", image, width, height);
+		destroy_image(&image);
+	}
 
 	return 0;
 }

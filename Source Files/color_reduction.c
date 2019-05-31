@@ -1,4 +1,4 @@
-#include "reduce.h"
+#include "color_reduction.h"
 #include "image.h"
 #include <stdio.h>
 #include <math.h>
@@ -68,7 +68,7 @@ int reduce_to_n_to_3_colors
 	return 0;
 }
 
-int reduce_test
+int color_reduction_test
 (const char* filename)
 {
 	unsigned width, height;
@@ -78,11 +78,15 @@ int reduce_test
 	char buffer[1024];
 	for (int i = 2; i <= 15; ++i)
 	{
-		load_image(filename, &image, &width, &height);
-		reduce_to_n_to_3_colors(&image, width, height, i);
-		sprintf(buffer, "%d_colors.png\0", (int)pow(i, 3));
-		save_image(buffer, image, width, height);
-		destroy_image(&image);
+		if (!load_image(filename, &image, &width, &height))
+		{
+			reduce_to_n_to_3_colors(&image, width, height, i);
+			sprintf(buffer, "%d_colors.png\0", (int)pow(i, 3));
+			save_image(buffer, image, width, height);
+			destroy_image(&image);
+		}
+		else
+			break;
 	}
 
 	return 0;

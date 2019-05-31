@@ -24,12 +24,14 @@ int inversion_test
 	unsigned width, height;
 	unsigned char* image = NULL;
 
-	load_image(filename, &image, &width, &height);
-	inversion(&image, width, height);
-	char buffer[1024];
-	sprintf(buffer, "inverted_%s\0", filename);
-	save_image(buffer, image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		inversion(&image, width, height);
+		char buffer[1024];
+		sprintf(buffer, "inverted_%s\0", filename);
+		save_image(buffer, image, width, height);
+		destroy_image(&image);
+	}
 
 	return 0;
 }

@@ -1,5 +1,5 @@
-#ifndef __REDUCE_H_
-#define __REDUCE_H_
+#ifndef __COLOR_REDUCTION_H_
+#define __COLOR_REDUCTION_H_
 
 /*Find closest reduced color*/
 void find_closest_color
@@ -10,6 +10,6 @@ int reduce_to_n_to_3_colors
 (unsigned char**, unsigned, unsigned, int);
 
 /*Reduce Test*/
-int reduce_test
+int color_reduction_test
 (const char*);
 #endif

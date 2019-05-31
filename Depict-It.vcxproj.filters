@@ -20,9 +20,6 @@
     <ClInclude Include="Header Files\image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\reduce.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header Files\error_diffusion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,6 +33,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\contrast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\color_reduction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\gamma_correction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,9 +55,6 @@
     <ClCompile Include="Source Files\image.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\reduce.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\error_diffusion.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,6 +68,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source Files\contrast.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\color_reduction.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\gamma_correction.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

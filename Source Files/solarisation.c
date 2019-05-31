@@ -38,18 +38,22 @@ int solarisation_test
 	char buffer[1024];
 
 	// Solarise below.
-	load_image(filename, &image, &width, &height);
-	solarisation(&image, width, height, 0xFF / 2, solarise_below);
-	sprintf(buffer, "solarised_below_%s\0", filename);
-	save_image(buffer, image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		solarisation(&image, width, height, 0xFF / 2, solarise_below);
+		sprintf(buffer, "solarised_below_%s\0", filename);
+		save_image(buffer, image, width, height);
+		destroy_image(&image);
+	}
 
 	// Solarise above.
-	load_image(filename, &image, &width, &height);
-	solarisation(&image, width, height, 0xFF / 2, solarise_above);
-	sprintf(buffer, "solarised_above_%s\0", filename);
-	save_image(buffer, image, width, height);
-	destroy_image(&image);
+	if (!load_image(filename, &image, &width, &height))
+	{
+		solarisation(&image, width, height, 0xFF / 2, solarise_above);
+		sprintf(buffer, "solarised_above_%s\0", filename);
+		save_image(buffer, image, width, height);
+		destroy_image(&image);
+	}
 
 	return 0;
 }
