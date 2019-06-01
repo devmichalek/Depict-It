@@ -1,6 +1,6 @@
 #include "grayscale.h"
 #include "color_reduction.h"
-//#include "error_diffusion.h"
+#include "error_diffusion.h"
 #include "inversion.h"
 #include "solarisation.h"
 #include "brightness.h"
@@ -15,6 +15,7 @@ int main(int argc, char** argv)
 	//solarisation_test("sunflower.png");
 	//contrast_test("zebra.png");
 	//brightness_test("pansy.png");
-	gamma_correction_test("tree.png");
+	//gamma_correction_test("tree.png");
+	error_diffusion_test("cat.png");
 	return 0;
 }
