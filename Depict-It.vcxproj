@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Header Files\blur.h" />
     <ClInclude Include="Header Files\brightness.h" />
     <ClInclude Include="Header Files\contrast.h" />
     <ClInclude Include="Header Files\error_diffusion.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Header Files\solarisation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source Files\blur.c" />
     <ClCompile Include="Source Files\brightness.c" />
     <ClCompile Include="Source Files\contrast.c" />
     <ClCompile Include="Source Files\error_diffusion.c" />

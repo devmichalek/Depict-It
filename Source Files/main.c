@@ -6,6 +6,7 @@
 #include "brightness.h"
 #include "contrast.h"
 #include "gamma_correction.h"
+#include "blur.h"
 
 int main(int argc, char** argv)
 {
@@ -16,6 +17,7 @@ int main(int argc, char** argv)
 	//contrast_test("zebra.png");
 	//brightness_test("pansy.png");
 	//gamma_correction_test("tree.png");
-	error_diffusion_test("cat.png");
+	//error_diffusion_test("cat.png");
+	blur_test("cballs.png");
 	return 0;
 }
