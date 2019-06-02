@@ -1,25 +1,9 @@
 # Depict-It
 Combination of image processing algorithms.
 
-## Reducing Colors ([Francis G. Loch Article](https://www.dfstudios.co.uk/articles/programming/image-programming-algorithms/image-processing-algorithms-part-1-finding-nearest-colour/) & [Wikipedia Article](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_palettes#6-bit_RGB))
-![parrot](https://user-images.githubusercontent.com/19840443/58425141-5f602980-8099-11e9-9e37-45c272ec4029.png)
-![3bit_rgb](https://user-images.githubusercontent.com/19840443/58425134-5e2efc80-8099-11e9-9a6e-fc75342079a9.png)
-![4bit_rgb](https://user-images.githubusercontent.com/19840443/58425887-51aba380-809b-11e9-981e-0076816deefb.png)
-![6bit_rgb](https://user-images.githubusercontent.com/19840443/58425135-5e2efc80-8099-11e9-8a87-f7340d3f8a0f.png)
-![8bit_rgb](https://user-images.githubusercontent.com/19840443/58425888-51aba380-809b-11e9-96c6-ad269f71eb3c.png)
-![9bit_rgb](https://user-images.githubusercontent.com/19840443/58425136-5ec79300-8099-11e9-96b3-78b813e2f161.png)
-![12bit_rgb](https://user-images.githubusercontent.com/19840443/58425266-aea65a00-8099-11e9-825f-d641333f0dee.png)
-![15bit_rgb](https://user-images.githubusercontent.com/19840443/58425139-5ec79300-8099-11e9-93c9-b5e021e9b7aa.png)
-
-## Grayscale Conversion ([Tanner Helland Article](http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/))
-![grass](https://user-images.githubusercontent.com/19840443/58510842-de3c8b80-8199-11e9-822c-d529ff804201.png "input")
-![average](https://user-images.githubusercontent.com/19840443/58510837-dda3f500-8199-11e9-872d-56cabf9ddcf2.png "average")
-![decomposition_max](https://user-images.githubusercontent.com/19840443/58510839-dda3f500-8199-11e9-9019-f21a0d0f73d7.png "decomposition max")
-![decomposition_min](https://user-images.githubusercontent.com/19840443/58510840-de3c8b80-8199-11e9-82cf-d72cc5e8a1fc.png "decomposition min")
-![desaturation](https://user-images.githubusercontent.com/19840443/58510841-de3c8b80-8199-11e9-8533-8c7649acf679.png "desaturation")
-![luminance](https://user-images.githubusercontent.com/19840443/58510843-ded52200-8199-11e9-90a1-519b5728e148.png "luminance")
-![luminance_ITU-R](https://user-images.githubusercontent.com/19840443/58510844-ded52200-8199-11e9-8c1e-b05ad2441efe.png "luminance ITU-R")
-![shades_16](https://user-images.githubusercontent.com/19840443/58510847-ded52200-8199-11e9-9b69-0681ad9fa5ce.png "shades 16")
-![single_channel_blue](https://user-images.githubusercontent.com/19840443/58510848-ded52200-8199-11e9-8d27-6e30f39d3151.png "single channel blue")
-![single_channel_green](https://user-images.githubusercontent.com/19840443/58510849-df6db880-8199-11e9-9483-4ba72b4589e6.png "single channel green")
-![single_channel_red](https://user-images.githubusercontent.com/19840443/58510850-df6db880-8199-11e9-8688-76dc16bc0c1a.png "single channel red")
+## List of Helpful Articles
+[Francis G. Loch Article](https://www.dfstudios.co.uk/articles/programming/image-programming-algorithms/image-processing-algorithms-part-1-finding-nearest-colour/)<br>
+[Wikipedia Article](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_palettes#6-bit_RGB)<br>
+[Tanner Helland Article](http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/)<br>
+[What-When-How Article](http://what-when-how.com/introduction-to-video-and-image-processing/visual-effects-introduction-to-video-and-image-processing-part-1/)<br>
+[Stack Overflow Gaussian Blur Question](https://stackoverflow.com/questions/1696113/how-do-i-gaussian-blur-an-image-without-using-any-in-built-gaussian-functions)
