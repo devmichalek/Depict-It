@@ -7,11 +7,11 @@ int pixalate
 
 /*Gaussian Kernel*/
 double* generate_gaussian_kernel
-(int);
+(int, double);
 
 /*Gaussian Blur.*/
 int gaussian_blur
-(unsigned char**, unsigned, unsigned, int, int);
+(unsigned char**, unsigned, unsigned, int);
 
 /*Blur Test*/
 int blur_test

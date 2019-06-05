@@ -58,17 +58,16 @@ int pixalate
 }
 
 double* generate_gaussian_kernel
-(int n)
+(int n, double sigma)
 {
 	double* kernel = (double*)malloc(sizeof(double) * n * n);
-	double sigma = 1.0;
-	double mean = n / 2;
+	double mean = (double)n / 2;
 	double sum = 0.0;
 	int x, y;
 	for (x = 0; x < n; ++x)
 		for (y = 0; y < n; ++y)
 		{
-			kernel[(y * n) + x] = exp(-0.5 * (pow((x - mean) / sigma, 2.0) + pow((y - mean) / sigma, 2.0)))
+			kernel[(y * n) + x] = exp(-0.5 * (pow(((double)x - mean) / sigma, 2.0) + pow(((double)y - mean) / sigma, 2.0)))
 				/ (2 * 3.14 * sigma * sigma);
 
 			// Accumulate the kernel values.
@@ -79,54 +78,53 @@ double* generate_gaussian_kernel
 	int size = n * n;
 	for (int i = 0; i < size; ++i)
 		kernel[i] /= sum;
+		
 	return kernel;
 }
 
 int gaussian_blur
-(unsigned char** image, unsigned width, unsigned height, int xasis, int yasis)
+(unsigned char** image, unsigned width, unsigned height, int asis)
 {
 	// Calculate kernel.
-	int size = (xasis + 1 + yasis);
-	double* kernel = generate_gaussian_kernel(size);
+	int size = asis * 2 + 1;
+	double* kernel = generate_gaussian_kernel(size, (double)(asis * 2));
 
-	unsigned sum_red;
-	unsigned sum_green;
-	unsigned sum_blue;
+	double sum_red;
+	double sum_green;
+	double sum_blue;
 
+	unsigned _where;
 	int x, y, a, b;
 	int asis_x, asis_y;
-	int kernel_x, kernel_y;
 	unsigned char* pixel = NULL;
 
-	for (x = 0; x < width; ++x)
-		for (y = 0; y < height; ++y)
+	for (y = 0; y < height; ++y)
+		for (x = 0; x < width; ++x)
 		{
 			sum_red = sum_green = sum_blue = 0;
-			for (a = x - xasis; a <= (int)x + xasis; ++a)
-				for (b = y - yasis; b <= (int)y + yasis; ++b)
+			for (b = -asis; b <= asis; ++b)		// y
+				for (a = -asis; a <= asis; ++a)	// x
 				{	// Normalize. Wrapping Up.
-					asis_x = a;
-					asis_y = b;
-					if (asis_x < 0)						{ asis_x = kernel_x = 0; }
-					else if (asis_x > (int)width - 1)	{ asis_x = width - 1; kernel_x = xasis + 1; }
-					else								{ kernel_x = asis_x - (x - xasis); }
-
-					if (asis_y < 0)						{ asis_y = kernel_y = 0; }
-					else if (asis_y > (int)height - 1)	{ asis_y = height - 1; kernel_y = yasis + 1; }
-					else								{ kernel_y = asis_y - (y - yasis); }
+					asis_x = x + a;
+					asis_y = y + b;
+					if (asis_x < 0)						{ asis_x = 0; }
+					else if (asis_x > (int)width - 1)	{ asis_x = width - 1; }
+					if (asis_y < 0)						{ asis_y = 0; }
+					else if (asis_y > (int)height - 1)	{ asis_y = height - 1; }
 
 					// Multiply.
+					_where = ((b + asis) * size) + a + asis;
 					pixel = get_pixel(*image, width, height, asis_x, asis_y);
-					sum_red +=		(unsigned)((double)*red(pixel)		* kernel[(kernel_y * yasis) + kernel_x]);
-					sum_green +=	(unsigned)((double)*green(pixel)	* kernel[(kernel_y * yasis) + kernel_x]);
-					sum_blue +=		(unsigned)((double)*blue(pixel)		* kernel[(kernel_y * yasis) + kernel_x]);
+					sum_red +=		(double)*red(pixel)		* kernel[_where];
+					sum_green +=	(double)*green(pixel)	* kernel[_where];
+					sum_blue +=		(double)*blue(pixel)	* kernel[_where];
 				}
 
 			// Set new channels to pixel.
 			pixel = get_pixel(*image, width, height, x, y);
-			*red(pixel) = sum_red;
-			*green(pixel) = sum_green;
-			*blue(pixel) = sum_blue;
+			*red(pixel) = (unsigned)sum_red;
+			*green(pixel) = (unsigned)sum_green;
+			*blue(pixel) = (unsigned)sum_blue;
 		}
 
 	// Destroy kernel.
@@ -142,7 +140,7 @@ int blur_test
 	unsigned char* image = NULL;
 
 	// Gaussian Blur.
-	for (int i = 1; i <= 5; ++i)
+	for (int i = 1; i <= 7; ++i)
 	{
 		if (!load_image(filename, &image, &width, &height))
 		{
