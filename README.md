@@ -1,5 +1,5 @@
 # Depict-It
-Depict-It contantains combination of most basic and most popular image processing algorithms.
+Depict-It contains combination of the most basic and the most popular image processing algorithms.
 
 ## List of Commands
 ```-blur <matrix size>``` - blurs the image with given matrix size (Gaussian Blur Algorithm).<br>
