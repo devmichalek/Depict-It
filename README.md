@@ -17,7 +17,7 @@ Depict-It contains combination of the most basic and the most popular image proc
 ```-grayshade <number of shades>``` - grays the image determined by number of shades.<br>
 ```-invert``` - inverts RGB channels of the image.<br>
 ```-solarise <below/above> <threshold>``` - solarises the image up/down to given threshold.<br>
-```-singechannel <r/g/b>``` - grays the image by single chosen RGB channel.
+```-singechannel <r/g/b>``` - grays the image by single chosen RGB channel.<br>
 <br>
 **Example:** ```image.png -blur 8 -luminance 0.2 0.5 0.3``` - image.png will be blurred with Gaussian Kernel 8x8 then luminanced.<br>
 ## List of Helpful Articles
