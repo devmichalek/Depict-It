@@ -9,6 +9,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Bison Flex">
+      <UniqueIdentifier>{7c732696-785e-4398-8d3a-0048792219af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated">
+      <UniqueIdentifier>{5117ad89-4288-4d6e-ad71-5eb3ced3437c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\grayscale.h">
@@ -43,6 +49,12 @@
     </ClInclude>
     <ClInclude Include="Header Files\blur.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\semantic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Generated\parser.tab.h">
+      <Filter>Generated</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -82,5 +94,22 @@
     <ClCompile Include="Source Files\blur.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source Files\semantic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Generated\lexer.c">
+      <Filter>Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="Generated\parser.tab.c">
+      <Filter>Generated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BisonFlex\parser.y">
+      <Filter>Bison Flex</Filter>
+    </None>
+    <None Include="BisonFlex\lexer.l">
+      <Filter>Bison Flex</Filter>
+    </None>
   </ItemGroup>
 </Project>
