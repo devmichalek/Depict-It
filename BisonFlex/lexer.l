@@ -12,6 +12,7 @@
 WORD [a-zA-Z0-9]+
 %%
 [ \t]			;
+\n				{  yylval.svalue = fix_strdup(yytext); return ENDL; }
 [0-9]+          { yylval.ivalue = atoi(yytext); return INT; }
 [0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
@@ -34,12 +35,11 @@ WORD [a-zA-Z0-9]+
 
 
 .				{
-					printf("Error: Unrecognized token occured.\n");
+					printf("Error: Unrecognized token occured\n");
 					printf("Press enter to continue...\n");
 					char enter = 0;
 					while (enter != '\r' && enter != '\n')
 						enter = getchar();
 					yyterminate();
 				}
-
 %%
