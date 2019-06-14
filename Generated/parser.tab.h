@@ -49,20 +49,22 @@ extern int yydebug;
      INT = 258,
      FLOAT = 259,
      STRING = 260,
-     COMMAND_BLUR = 261,
-     COMMAND_BRIGHTEN = 262,
-     COMMAND_REDUCE = 263,
-     COMMAND_CONTRAST = 264,
-     COMMAND_DIFFUSE = 265,
-     COMMAND_GAMMA = 266,
-     COMMAND_AVERAGE = 267,
-     COMMAND_LUMINANCE = 268,
-     COMMAND_DESATURATE = 269,
-     COMMAND_DECOMPOSE = 270,
-     COMMAND_GRAYSHADE = 271,
-     COMMAND_INVERT = 272,
-     COMMAND_SOLARISE = 273,
-     COMMAND_SINGLECHANNEL = 274
+     FILENAME = 261,
+     ENDL = 262,
+     COMMAND_BLUR = 263,
+     COMMAND_BRIGHTEN = 264,
+     COMMAND_REDUCE = 265,
+     COMMAND_CONTRAST = 266,
+     COMMAND_DIFFUSE = 267,
+     COMMAND_GAMMA = 268,
+     COMMAND_AVERAGE = 269,
+     COMMAND_LUMINANCE = 270,
+     COMMAND_DESATURATE = 271,
+     COMMAND_DECOMPOSE = 272,
+     COMMAND_GRAYSHADE = 273,
+     COMMAND_INVERT = 274,
+     COMMAND_SOLARISE = 275,
+     COMMAND_SINGLECHANNEL = 276
    };
 #endif
 
@@ -79,7 +81,7 @@ typedef union YYSTYPE
 
 
 /* Line 2058 of yacc.c  */
-#line 83 ".\\Generated\\parser.tab.h"
+#line 85 ".\\Generated\\parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

@@ -355,8 +355,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 21
-#define YY_END_OF_BUFFER 22
+#define YY_NUM_RULES 22
+#define YY_END_OF_BUFFER 23
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -366,19 +366,19 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[122] =
     {   0,
-        0,    0,   22,   20,    1,   21,   20,    2,    4,    0,
-        0,    0,    0,    0,    0,    0,    0,    0,    0,    2,
-        4,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    3,    0,    0,    0,    0,
+        0,    0,   23,   21,    1,    2,   21,    3,    5,    0,
+        0,    0,    0,    0,    0,    0,    0,    0,    0,    3,
+        5,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    4,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    6,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,    5,    0,    0,    0,
-        0,    0,    0,   11,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,    0,   17,    0,    8,
-        0,    0,   12,    0,    0,    0,    0,   10,    0,    0,
+        0,    0,    0,    7,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,    6,    0,    0,    0,
+        0,    0,    0,   12,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,    0,   18,    0,    9,
+        0,    0,   13,    0,    0,    0,    0,   11,    0,    0,
 
-        0,    0,    7,    9,    0,    0,    0,    0,    0,   18,
-       15,    0,   16,   13,    0,   14,    0,    0,    0,   19,
+        0,    0,    8,   10,    0,    0,    0,    0,    0,   19,
+       16,    0,   17,   14,    0,   15,    0,    0,    0,   20,
         0
     } ;
 
@@ -803,98 +803,104 @@ YY_RULE_SETUP
 ;
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
 YY_RULE_SETUP
 #line 15 "BisonFlex\\lexer.l"
-{ yylval.ivalue = atoi(yytext); return INT; }
+{  yylval.svalue = fix_strdup(yytext); return ENDL; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 16 "BisonFlex\\lexer.l"
-{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
+{ yylval.ivalue = atoi(yytext); return INT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 17 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return STRING; }
+{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 18 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
+{ yylval.svalue = fix_strdup(yytext); return STRING; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 20 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
+#line 19 "BisonFlex\\lexer.l"
+{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 21 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 22 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_REDUCE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 23 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_CONTRAST; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_REDUCE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 24 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_DIFFUSE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_CONTRAST; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 25 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_GAMMA; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_DIFFUSE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 26 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_GAMMA; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 27 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_LUMINANCE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 28 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_DESATURATE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_LUMINANCE; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 29 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_DECOMPOSE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_DESATURATE; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 30 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_GRAYSHADE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_DECOMPOSE; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 31 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_INVERT; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_GRAYSHADE; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 32 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_INVERT; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 33 "BisonFlex\\lexer.l"
-{ yylval.svalue = fix_strdup(yytext); return COMMAND_SINGLECHANNEL; }
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 36 "BisonFlex\\lexer.l"
+#line 34 "BisonFlex\\lexer.l"
+{ yylval.svalue = fix_strdup(yytext); return COMMAND_SINGLECHANNEL; }
+	YY_BREAK
+case 21:
+YY_RULE_SETUP
+#line 37 "BisonFlex\\lexer.l"
 {
 					printf("Error: Unrecognized token occured.\n");
 					printf("Press enter to continue...\n");
@@ -904,12 +910,12 @@ YY_RULE_SETUP
 					yyterminate();
 				}
 	YY_BREAK
-case 21:
+case 22:
 YY_RULE_SETUP
 #line 45 "BisonFlex\\lexer.l"
 ECHO;
 	YY_BREAK
-#line 912 ".\\Generated\\lexer.c"
+#line 918 ".\\Generated\\lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
