@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int pixalate
+int pixelate
 (unsigned char** image, unsigned width, unsigned height, int pixel_size)
 {
 	if (pixel_size < 2)
@@ -144,10 +144,8 @@ int blur_test
 	{
 		if (!load_image(filename, &image, &width, &height))
 		{
-			int xasis = i;
-			int yasis = i;
-			gaussian_blur(&image, width, height, xasis, yasis);
-			sprintf(buffer, "gaussian_blur_x%d_y%d_%s\0", xasis, yasis, filename);
+			gaussian_blur(&image, width, height, i);
+			sprintf(buffer, "gaussian_blur_xy%d_%s\0", i, filename);
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
@@ -156,18 +154,18 @@ int blur_test
 	}
 
 	// Pixelate.
-	/*for (int i = 2; i <= 20; ++i)
+	for (int i = 2; i <= 20; ++i)
 	{
 		if (!load_image(filename, &image, &width, &height))
 		{
-			pixalate(&image, width, height, i);
+			pixelate(&image, width, height, i);
 			sprintf(buffer, "pixelate_%d_%s\0", i, filename);
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
 		else
 			break;
-	}*/
+	}
 
 	return 0;
 }

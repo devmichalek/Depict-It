@@ -1,8 +1,8 @@
 #ifndef __BLUR_H_
 #define __BLUR_H_
 
-/*Pixalate*/
-int pixalate
+/*Pixelate*/
+int pixelate
 (unsigned char**, unsigned, unsigned, int);
 
 /*Gaussian Kernel*/

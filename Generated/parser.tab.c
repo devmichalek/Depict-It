@@ -66,13 +66,14 @@
 #line 1 "Bison Flex\\parser.y"
 
 	#include "parse.h"
+	#include "semantic.h"
 	#include <stdio.h>
 	extern int yylex();
 	extern int yyparse();
 	void yyerror(const char* str);
 
 /* Line 371 of yacc.c  */
-#line 76 "Generated\\parser.tab.c"
+#line 77 "Generated\\parser.tab.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -135,7 +136,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 387 of yacc.c  */
-#line 9 "Bison Flex\\parser.y"
+#line 10 "Bison Flex\\parser.y"
 
 	int ivalue;
 	float fvalue;
@@ -143,7 +144,7 @@ typedef union YYSTYPE
 
 
 /* Line 387 of yacc.c  */
-#line 147 "Generated\\parser.tab.c"
+#line 148 "Generated\\parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -171,7 +172,7 @@ int yyparse ();
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 175 "Generated\\parser.tab.c"
+#line 176 "Generated\\parser.tab.c"
 
 #ifdef short
 # undef short
@@ -475,11 +476,11 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    38,    38,    44,    48,    57,    58,    59,    60,    61,
-      62,    63,    64,    65,    66,    67,    68,    69,    70,    71,
-      72,    73,    74,    75,    76,    77,    78,    79,    80,    81,
-      82,    83,    84,    88,    95,   102,   109,   116,   123,   130,
-     137,   144,   151,   159,   166,   173,   180
+       0,    39,    39,    45,    49,    58,    59,    60,    61,    62,
+      63,    64,    65,    66,    67,    68,    69,    70,    71,    72,
+      73,    74,    75,    76,    77,    78,    79,    80,    81,    82,
+      83,    84,    85,    89,    96,   103,   110,   117,   124,   131,
+     138,   145,   152,   160,   167,   174,   181
 };
 #endif
 
@@ -1420,7 +1421,7 @@ yyreduce:
     {
         case 2:
 /* Line 1792 of yacc.c  */
-#line 38 "Bison Flex\\parser.y"
+#line 39 "Bison Flex\\parser.y"
     {
 		printf("Starting process...\n");
 	}
@@ -1428,7 +1429,7 @@ yyreduce:
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 44 "Bison Flex\\parser.y"
+#line 45 "Bison Flex\\parser.y"
     {
 		printf("Input and Output specified as \"%s\"\n", (char*)(yyvsp[(1) - (2)].svalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1437,7 +1438,7 @@ yyreduce:
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 48 "Bison Flex\\parser.y"
+#line 49 "Bison Flex\\parser.y"
     {
 		printf("Input specified as \"%s\"\n", (char*)(yyvsp[(1) - (3)].svalue));
 		printf("Output specified as \"%s\"\n", (char*)(yyvsp[(3) - (3)].svalue));
@@ -1448,7 +1449,7 @@ yyreduce:
 
   case 33:
 /* Line 1792 of yacc.c  */
-#line 88 "Bison Flex\\parser.y"
+#line 89 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1457,7 +1458,7 @@ yyreduce:
 
   case 34:
 /* Line 1792 of yacc.c  */
-#line 95 "Bison Flex\\parser.y"
+#line 96 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1466,7 +1467,7 @@ yyreduce:
 
   case 35:
 /* Line 1792 of yacc.c  */
-#line 102 "Bison Flex\\parser.y"
+#line 103 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1475,7 +1476,7 @@ yyreduce:
 
   case 36:
 /* Line 1792 of yacc.c  */
-#line 109 "Bison Flex\\parser.y"
+#line 110 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1484,7 +1485,7 @@ yyreduce:
 
   case 37:
 /* Line 1792 of yacc.c  */
-#line 116 "Bison Flex\\parser.y"
+#line 117 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1493,7 +1494,7 @@ yyreduce:
 
   case 38:
 /* Line 1792 of yacc.c  */
-#line 123 "Bison Flex\\parser.y"
+#line 124 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1502,7 +1503,7 @@ yyreduce:
 
   case 39:
 /* Line 1792 of yacc.c  */
-#line 130 "Bison Flex\\parser.y"
+#line 131 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
@@ -1511,7 +1512,7 @@ yyreduce:
 
   case 40:
 /* Line 1792 of yacc.c  */
-#line 137 "Bison Flex\\parser.y"
+#line 138 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %f %f %f\n", (char*)(yyvsp[(1) - (4)].svalue), (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
 		free((yyvsp[(1) - (4)].svalue));
@@ -1520,7 +1521,7 @@ yyreduce:
 
   case 41:
 /* Line 1792 of yacc.c  */
-#line 144 "Bison Flex\\parser.y"
+#line 145 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
@@ -1529,7 +1530,7 @@ yyreduce:
 
   case 42:
 /* Line 1792 of yacc.c  */
-#line 151 "Bison Flex\\parser.y"
+#line 152 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %s\n", (char*)(yyvsp[(1) - (2)].svalue), (char*)(yyvsp[(2) - (2)].svalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1539,7 +1540,7 @@ yyreduce:
 
   case 43:
 /* Line 1792 of yacc.c  */
-#line 159 "Bison Flex\\parser.y"
+#line 160 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1548,7 +1549,7 @@ yyreduce:
 
   case 44:
 /* Line 1792 of yacc.c  */
-#line 166 "Bison Flex\\parser.y"
+#line 167 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
@@ -1557,7 +1558,7 @@ yyreduce:
 
   case 45:
 /* Line 1792 of yacc.c  */
-#line 173 "Bison Flex\\parser.y"
+#line 174 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1566,7 +1567,7 @@ yyreduce:
 
   case 46:
 /* Line 1792 of yacc.c  */
-#line 180 "Bison Flex\\parser.y"
+#line 181 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %s\n", (char*)(yyvsp[(1) - (2)].svalue), (char*)(yyvsp[(2) - (2)].svalue));
 		free((yyvsp[(1) - (2)].svalue));
@@ -1576,7 +1577,7 @@ yyreduce:
 
 
 /* Line 1792 of yacc.c  */
-#line 1580 "Generated\\parser.tab.c"
+#line 1581 "Generated\\parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1808,7 +1809,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 187 "Bison Flex\\parser.y"
+#line 188 "Bison Flex\\parser.y"
 
 
 void yyerror(const char* str)

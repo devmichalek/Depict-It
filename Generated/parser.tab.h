@@ -73,7 +73,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 9 "Bison Flex\\parser.y"
+#line 10 "Bison Flex\\parser.y"
 
 	int ivalue;
 	float fvalue;

@@ -1,5 +1,6 @@
 %{
 	#include "parse.h"
+	#include "semantic.h"
 	#include <stdio.h>
 	extern int yylex();
 	extern int yyparse();
