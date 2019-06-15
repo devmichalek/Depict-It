@@ -1,6 +1,6 @@
-#line 1 ".\\Generated\\lexer.c"
+#line 1 "Generated\\lexer.c"
 
-#line 3 ".\\Generated\\lexer.c"
+#line 3 "Generated\\lexer.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -513,8 +513,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "BisonFlex\\lexer.l"
-#line 2 "BisonFlex\\lexer.l"
+#line 1 "Bison Flex\\lexer.l"
+#line 2 "Bison Flex\\lexer.l"
 	#include "parser.tab.h"
 	#include <stdio.h>
 
@@ -523,8 +523,8 @@ char *yytext;
 #else
 #define fix_strdup(X) strdup(X)
 #endif
-#line 526 ".\\Generated\\lexer.c"
-#line 527 ".\\Generated\\lexer.c"
+#line 526 "Generated\\lexer.c"
+#line 527 "Generated\\lexer.c"
 
 #define INITIAL 0
 
@@ -738,9 +738,9 @@ YY_DECL
 		}
 
 	{
-#line 13 "BisonFlex\\lexer.l"
+#line 13 "Bison Flex\\lexer.l"
 
-#line 743 ".\\Generated\\lexer.c"
+#line 743 "Generated\\lexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -799,110 +799,110 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "BisonFlex\\lexer.l"
+#line 14 "Bison Flex\\lexer.l"
 ;
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 15 "BisonFlex\\lexer.l"
+#line 15 "Bison Flex\\lexer.l"
 {  yylval.svalue = fix_strdup(yytext); return ENDL; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "BisonFlex\\lexer.l"
+#line 16 "Bison Flex\\lexer.l"
 { yylval.ivalue = atoi(yytext); return INT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "BisonFlex\\lexer.l"
+#line 17 "Bison Flex\\lexer.l"
 { yylval.fvalue = (float)atof(yytext); return FLOAT; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 18 "BisonFlex\\lexer.l"
+#line 18 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return STRING; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 "BisonFlex\\lexer.l"
+#line 19 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return FILENAME; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 21 "BisonFlex\\lexer.l"
+#line 21 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 22 "BisonFlex\\lexer.l"
+#line 22 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 23 "BisonFlex\\lexer.l"
+#line 23 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_REDUCE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 24 "BisonFlex\\lexer.l"
+#line 24 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_CONTRAST; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "BisonFlex\\lexer.l"
+#line 25 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_DIFFUSE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "BisonFlex\\lexer.l"
+#line 26 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_GAMMA; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 27 "BisonFlex\\lexer.l"
+#line 27 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 28 "BisonFlex\\lexer.l"
+#line 28 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_LUMINANCE; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 29 "BisonFlex\\lexer.l"
+#line 29 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_DESATURATE; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 30 "BisonFlex\\lexer.l"
+#line 30 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_DECOMPOSE; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 31 "BisonFlex\\lexer.l"
+#line 31 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_GRAYSHADE; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 32 "BisonFlex\\lexer.l"
+#line 32 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_INVERT; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 33 "BisonFlex\\lexer.l"
+#line 33 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 34 "BisonFlex\\lexer.l"
+#line 34 "Bison Flex\\lexer.l"
 { yylval.svalue = fix_strdup(yytext); return COMMAND_SINGLECHANNEL; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 37 "BisonFlex\\lexer.l"
+#line 37 "Bison Flex\\lexer.l"
 {
-					printf("Error: Unrecognized token occured.\n");
+					printf("Error: Unrecognized token occured\n");
 					printf("Press enter to continue...\n");
 					char enter = 0;
 					while (enter != '\r' && enter != '\n')
@@ -912,10 +912,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 45 "BisonFlex\\lexer.l"
+#line 45 "Bison Flex\\lexer.l"
 ECHO;
 	YY_BREAK
-#line 918 ".\\Generated\\lexer.c"
+#line 918 "Generated\\lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1920,5 +1920,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 45 "BisonFlex\\lexer.l"
+#line 45 "Bison Flex\\lexer.l"
 

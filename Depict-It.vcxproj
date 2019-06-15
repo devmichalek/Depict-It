@@ -159,39 +159,31 @@
     <ClCompile Include="Source Files\solarisation.c" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="BisonFlex\lexer.l">
+    <CustomBuild Include="Bison Flex\lexer.l">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)flex --wincompat -o .\Generated\%(Filename).c  %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)flex --wincompat -o .\Generated\%(Filename).c  %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)flex --wincompat -o .\Generated\%(Filename).c  %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)flex --wincompat -o .\Generated\%(Filename).c  %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Generated\%(Filename).c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Generated\%(Filename).c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Generated\%(Filename).c</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Generated\%(Filename).c</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Generated\parser.h</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Generated\parser.h</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Generated\parser.h</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Generated\parser.h</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\flex.exe --wincompat -o Generated\lexer.c "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generated\lexer.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\flex.exe --wincompat -o Generated\lexer.c "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generated\lexer.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\flex.exe --wincompat -o Generated\lexer.c "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generated\lexer.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\flex.exe --wincompat -o Generated\lexer.c "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generated\lexer.c</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </CustomBuild>
-    <CustomBuild Include="BisonFlex\parser.y">
+    <CustomBuild Include="Bison Flex\parser.y">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\BisonFlex\bison.exe -b .\Generated\parser -d %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\BisonFlex\bison.exe -b .\Generated\parser -d %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\BisonFlex\bison.exe -b .\Generated\parser -d %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\BisonFlex\bison.exe -b .\Generated\parser -d %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">parser.c; parser.h</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">parser.c; parser.h</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">parser.c; parser.h</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">parser.c; parser.h</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bison.exe -b Generated\parser -d "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generated\parser.tab.c;Generated\parser.tab.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bison.exe -b Generated\parser -d "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generated\parser.tab.c;Generated\parser.tab.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bison.exe -b Generated\parser -d "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generated\parser.tab.c;Generated\parser.tab.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bison.exe -b Generated\parser -d "%(Identity)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generated\parser.tab.c;Generated\parser.tab.h</Outputs>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
