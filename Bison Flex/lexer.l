@@ -10,6 +10,7 @@
 %}
 %option noyywrap
 WORD [a-zA-Z0-9]+
+CHARACTER [a-zA-Z]
 %%
 [ \t]			;
 \n				{  yylval.svalue = fix_strdup(yytext); return ENDL; }
@@ -17,6 +18,7 @@ WORD [a-zA-Z0-9]+
 [0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
 {WORD}\.png		{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
+{CHARACTER}		{ yylval.cvalue = (char)atoi(yytext); return CHAR; }
 
 \-average		{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 \-blur			{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }

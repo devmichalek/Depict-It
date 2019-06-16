@@ -10,11 +10,13 @@
 %union {
 	int ivalue;
 	float fvalue;
+	unsigned char cvalue;
 	char* svalue;
 }
 
 %token <ivalue> INT
 %token <fvalue> FLOAT
+%token <cvalue> CHAR
 %token <svalue> STRING
 %token <svalue> FILENAME
 %token <svalue> ENDL
@@ -45,11 +47,15 @@ processing:
 process:
 	FILENAME cmd {
 		printf("Input and Output specified as \"%s\"\n", (char*)$1);
+		setInputFilename((char*)$1);
+		setOutputFilename((char*)$1);
 		free($1);
 	}
 	| FILENAME cmd FILENAME {
 		printf("Input specified as \"%s\"\n", (char*)$1);
 		printf("Output specified as \"%s\"\n", (char*)$3);
+		setInputFilename((char*)$1);
+		setOutputFilename((char*)$3);
 		free($1);
 		free($3);
 	}
@@ -154,10 +160,10 @@ cmd_gamma:
 	;
 
 cmd_grayshade:
-	COMMAND_GRAYSHADE INT {
+	COMMAND_GRAYSHADE CHAR {
 		printf("Pushing  %s %d\n", (char*)$1, (int)$2);
 		free($1);
-		pushStructToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (int)$2);
+		pushStructToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (char)$2);
 	}
 	;
 
@@ -194,17 +200,17 @@ cmd_reduce:
 	;
 
 cmd_singlechannel:
-	COMMAND_SINGLECHANNEL STRING {
-		printf("Pushing  %s %s\n", (char*)$1, (char*)$2);
-		pushStructToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (char*)$2);
+	COMMAND_SINGLECHANNEL CHAR {
+		printf("Pushing  %s %c\n", (char*)$1, (char)$2);
+		pushStructToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (unsigned char)$2);
 	}
 	;
 
 cmd_solarise:
-	COMMAND_SOLARISE INT {
-		printf("Pushing  %s %d\n", (char*)$1, (int)$2);
+	COMMAND_SOLARISE STRING CHAR {
+		printf("Pushing  %s %c\n", (char*)$1, (unsigned char)$2);
 		free($1);
-		pushStructToInterpreter(COMMAND_SOLARISE_INDEX, 1, (char*)$2, (int)$3);
+		pushStructToInterpreter(COMMAND_SOLARISE_INDEX, 1, (char*)$2, (unsigned char)$3);
 	}
 	;
 %%

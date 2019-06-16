@@ -1,6 +1,8 @@
 #include "semantic.h"
 #include <string.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "blur.h"
 #include "brightness.h"
@@ -16,16 +18,15 @@ void initInterpreter()
 {
 	gInterpreter.input[0] = 0;
 	gInterpreter.output[0] = 0;
-	gInterpreter.bOutput = 0;
 	gInterpreter.tree = NULL;
 }
 
 int setInputFilename(char* ptr)
 {
-	unsigned length = strlen(ptr);
+	size_t length = strlen(ptr);
 	if (length > 2048)
 	{
-		printf("Error: Filename %s is too long for buffer\n", ptr);
+		printf("Error: Input filename %s is too long for buffer\n", ptr);
 		return 1;
 	}
 
@@ -35,14 +36,13 @@ int setInputFilename(char* ptr)
 
 int setOutputFilename(char* ptr)
 {
-	unsigned length = strlen(ptr);
+	size_t length = strlen(ptr);
 	if (length > 2048)
 	{
-		printf("Error: Filename %s is too long for buffer\n", ptr);
+		printf("Error: Output filename %s is too long for buffer\n", ptr);
 		return 1;
 	}
 
-	gInterpreter.bOutput = 1;
 	strcpy(gInterpreter.output, ptr);
 	return 0;
 }
@@ -52,7 +52,7 @@ int pushStructToInterpreter(int index, int count, ...)
 	// Go to the end of the list.
 	Node** current = &gInterpreter.tree;
 	while (*current)
-		*current = &(*current)->next;
+		current = &((*current)->next);
 
 	// Prepare current.
 	*current = (Node*)malloc(sizeof(Node));
@@ -101,7 +101,7 @@ int pushStructToInterpreter(int index, int count, ...)
 			((Luminance*)(*current)->ptrToStruct)->greenRatio = va_arg(ap, float);
 			((Luminance*)(*current)->ptrToStruct)->blueRatio = va_arg(ap, float);
 			break;
-		case COMMAND_PIXELATE:
+		case COMMAND_PIXELATE_INDEX:
 			(*current)->ptrToStruct = (Pixelate*)malloc(sizeof(Pixelate));
 			((Pixelate*)(*current)->ptrToStruct)->size = va_arg(ap, int);
 			break;
@@ -111,7 +111,7 @@ int pushStructToInterpreter(int index, int count, ...)
 			break;
 		case COMMAND_SINGLECHANNEL_INDEX:
 			(*current)->ptrToStruct = (SingleChannel*)malloc(sizeof(SingleChannel));
-			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, char*);
+			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, unsigned char);
 			break;
 		case COMMAND_SOLARISE_INDEX:
 			(*current)->ptrToStruct = (Solarise*)malloc(sizeof(Solarise));
@@ -119,11 +119,11 @@ int pushStructToInterpreter(int index, int count, ...)
 			((Solarise*)(*current)->ptrToStruct)->threshold = va_arg(ap, unsigned char);
 			break;
 		default:
-			va_end(count);
+			va_end(ap);
 			printf("Error: Unknown error occured while indexing function\n");
 			return 1;
 	}
 
-	va_end(count);
+	va_end(ap);
 	return 0;
 }

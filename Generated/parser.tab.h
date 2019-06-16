@@ -48,23 +48,25 @@ extern int yydebug;
    enum yytokentype {
      INT = 258,
      FLOAT = 259,
-     STRING = 260,
-     FILENAME = 261,
-     ENDL = 262,
-     COMMAND_BLUR = 263,
-     COMMAND_BRIGHTEN = 264,
-     COMMAND_REDUCE = 265,
-     COMMAND_CONTRAST = 266,
-     COMMAND_DIFFUSE = 267,
-     COMMAND_GAMMA = 268,
-     COMMAND_AVERAGE = 269,
-     COMMAND_LUMINANCE = 270,
-     COMMAND_DESATURATE = 271,
-     COMMAND_DECOMPOSE = 272,
-     COMMAND_GRAYSHADE = 273,
-     COMMAND_INVERT = 274,
-     COMMAND_SOLARISE = 275,
-     COMMAND_SINGLECHANNEL = 276
+     CHAR = 260,
+     STRING = 261,
+     FILENAME = 262,
+     ENDL = 263,
+     COMMAND_AVERAGE = 264,
+     COMMAND_BLUR = 265,
+     COMMAND_BRIGHTEN = 266,
+     COMMAND_CONTRAST = 267,
+     COMMAND_DECOMPOSE = 268,
+     COMMAND_DESATURATE = 269,
+     COMMAND_DIFFUSE = 270,
+     COMMAND_GAMMA = 271,
+     COMMAND_GRAYSHADE = 272,
+     COMMAND_INVERT = 273,
+     COMMAND_LUMINANCE = 274,
+     COMMAND_PIXELATE = 275,
+     COMMAND_REDUCE = 276,
+     COMMAND_SINGLECHANNEL = 277,
+     COMMAND_SOLARISE = 278
    };
 #endif
 
@@ -77,11 +79,12 @@ typedef union YYSTYPE
 
 	int ivalue;
 	float fvalue;
+	unsigned char cvalue;
 	char* svalue;
 
 
 /* Line 2058 of yacc.c  */
-#line 85 "Generated\\parser.tab.h"
+#line 88 "Generated\\parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

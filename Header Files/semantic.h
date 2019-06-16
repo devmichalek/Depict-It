@@ -12,7 +12,7 @@
 #define COMMAND_GRAYSHADE_INDEX 8
 #define COMMAND_INVERT_INDEX 9
 #define COMMAND_LUMINANCE_INDEX 10
-#define COMMAND_PIXELATE 11
+#define COMMAND_PIXELATE_INDEX 11
 #define COMMAND_REDUCE_INDEX 12
 #define COMMAND_SINGLECHANNEL_INDEX 13
 #define COMMAND_SOLARISE_INDEX 14
@@ -57,7 +57,7 @@ typedef Blur Pixelate;
 typedef Brighten Reduce;
 
 typedef struct SingleChannel {
-	char* channel;
+	unsigned char channel;
 } SingleChannel;
 
 typedef struct Solarise {
@@ -70,14 +70,13 @@ typedef struct Node
 {
 	int index;
 	void* ptrToStruct;
-	Node* next;
+	struct Node* next;
 } Node;
 
-typedef struct Interpreter
+typedef struct
 {
 	char input[2048];
 	char output[2048];
-	int bOutput;
 	Node* tree;
 } Interpreter;
 Interpreter gInterpreter;
