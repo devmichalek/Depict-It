@@ -15,7 +15,7 @@ Depict-It contains combination of the most basic and the most popular image proc
 ```-grayshade <number of shades>``` - grays the image determined by number of shades.<br>
 ```-invert``` - inverts RGB channels of the image.<br>
 ```-luminance <r> <g> <b>``` - luminances the image, takes each ratio separetaly for each channel.<br>
-```-pixelate <n>``` - cuts image into smaller chunks defined by <n>.<br>
+```-pixelate <n>``` - cuts image into smaller chunks defined by \<n\>.<br>
 ```-reduce <n>``` - reduces image colors to the n to the power of 3 colors.<br>
 ```-singechannel <r/g/b>``` - grays the image by single chosen RGB channel.<br>
 ```-solarise <below/above> <threshold>``` - solarises the image up/down to given threshold.<br>
