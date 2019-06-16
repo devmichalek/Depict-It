@@ -93,9 +93,14 @@ int grayscale_decomposition
 }
 
 int grayscale_single_channel
-(unsigned char** image, unsigned width, unsigned height, unsigned char n)
+(unsigned char** image, unsigned width, unsigned height, char channel)
 {
+	int n = 0;
+	if (channel == 'r')			n = 0;
+	else if (channel == 'g')	n = 0;
+	else n = 2; // 'b'
 	n %= 4;
+
 	unsigned i = 0;
 	unsigned size = width * height;
 	for (; i < size * 4; i += 4)
@@ -183,21 +188,21 @@ int grayscale_test
 	// Grayscale Single Channel.
 	if (!load_image(filename, &image, &width, &height))
 	{
-		grayscale_single_channel(&image, width, height, 0);
+		grayscale_single_channel(&image, width, height, 'r');
 		save_image("single_channel_red.png", image, width, height);
 		destroy_image(&image);
 	}
 
 	if (!load_image(filename, &image, &width, &height))
 	{
-		grayscale_single_channel(&image, width, height, 1);
+		grayscale_single_channel(&image, width, height, 'g');
 		save_image("single_channel_green.png", image, width, height);
 		destroy_image(&image);
 	}
 
 	if (!load_image(filename, &image, &width, &height))
 	{
-		grayscale_single_channel(&image, width, height, 2);
+		grayscale_single_channel(&image, width, height, 'b');
 		save_image("single_channel_blue.png", image, width, height);
 		destroy_image(&image);
 	}

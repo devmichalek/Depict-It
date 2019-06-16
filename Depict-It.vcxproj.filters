@@ -105,11 +105,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Bison Flex\lexer.l">
+    <CustomBuild Include="Bison Flex\parser.y">
       <Filter>Bison Flex</Filter>
-    </None>
-    <None Include="Bison Flex\parser.y">
+    </CustomBuild>
+    <CustomBuild Include="Bison Flex\lexer.l">
       <Filter>Bison Flex</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ int grayscale_decomposition
 
 /*Grayscale Single Channel Conversion*/
 int grayscale_single_channel
-(unsigned char**, unsigned, unsigned, unsigned char);
+(unsigned char**, unsigned, unsigned, char);
 
 /*Grayscale Shades Conversion*/
 int grayscale_shades

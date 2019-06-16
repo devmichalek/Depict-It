@@ -18,21 +18,21 @@ WORD [a-zA-Z0-9]+
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
 {WORD}\.png		{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
 
+\-average		{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 \-blur			{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
 \-brighten		{ yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
-\-reduce		{ yylval.svalue = fix_strdup(yytext); return COMMAND_REDUCE; }
 \-contrast		{ yylval.svalue = fix_strdup(yytext); return COMMAND_CONTRAST; }
+\-decompose		{ yylval.svalue = fix_strdup(yytext); return COMMAND_DECOMPOSE; }
+\-desaturate	{ yylval.svalue = fix_strdup(yytext); return COMMAND_DESATURATE; }
 \-diffuse		{ yylval.svalue = fix_strdup(yytext); return COMMAND_DIFFUSE; }
 \-gamma			{ yylval.svalue = fix_strdup(yytext); return COMMAND_GAMMA; }
-\-average		{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
-\-luminance		{ yylval.svalue = fix_strdup(yytext); return COMMAND_LUMINANCE; }
-\-desaturate	{ yylval.svalue = fix_strdup(yytext); return COMMAND_DESATURATE; }
-\-decompose		{ yylval.svalue = fix_strdup(yytext); return COMMAND_DECOMPOSE; }
 \-grayshade		{ yylval.svalue = fix_strdup(yytext); return COMMAND_GRAYSHADE; }
 \-invert		{ yylval.svalue = fix_strdup(yytext); return COMMAND_INVERT; }
-\-solarise		{ yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
+\-luminance		{ yylval.svalue = fix_strdup(yytext); return COMMAND_LUMINANCE; }
+\-pixelate		{ yylval.svalue = fix_strdup(yytext); return COMMAND_PIXELATE; }
+\-reduce		{ yylval.svalue = fix_strdup(yytext); return COMMAND_REDUCE; }
 \-singlechannel	{ yylval.svalue = fix_strdup(yytext); return COMMAND_SINGLECHANNEL; }
-
+\-solarise		{ yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
 
 .				{
 					printf("Error: Unrecognized token occured\n");

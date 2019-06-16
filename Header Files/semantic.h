@@ -17,9 +17,7 @@
 #define COMMAND_SINGLECHANNEL_INDEX 13
 #define COMMAND_SOLARISE_INDEX 14
 
-typedef struct Average {
-	float ratio;
-} Average;
+//typedef struct Average;
 
 typedef struct Blur {
 	int size;
@@ -32,9 +30,40 @@ typedef struct Brighten {
 typedef Brighten Contrast;
 
 typedef struct Decompose {
-	unsigned char(*func)(unsigned char*);
+	char* functionName;
 } Decompose;
 
+//typedef struct Desaturate;
+
+typedef Brighten Diffuse;
+
+typedef struct Gamma {
+	double ratio;
+} Gamma;
+
+typedef struct GrayShade {
+	unsigned char shades;
+} GrayShade;
+
+//typedef struct Invert;
+
+typedef struct Luminance {
+	float redRatio;
+	float greenRatio;
+	float blueRatio;
+} Luminance;
+
+typedef Blur Pixelate;
+typedef Brighten Reduce;
+
+typedef struct SingleChannel {
+	char* channel;
+} SingleChannel;
+
+typedef struct Solarise {
+	char* functionName;
+	unsigned char threshold;
+} Solarise;
 
 
 typedef struct Node
