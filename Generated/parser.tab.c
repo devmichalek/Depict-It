@@ -1462,7 +1462,7 @@ yyreduce:
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
-		pushStructToInterpreter(COMMAND_AVERAGE_INDEX, 0);
+		pushToInterpreter(COMMAND_AVERAGE_INDEX, 0);
 	}
     break;
 
@@ -1472,7 +1472,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_BLUR_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_BLUR_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1482,7 +1482,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_BRIGHTEN_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_BRIGHTEN_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1492,7 +1492,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_CONTRAST_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_CONTRAST_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1502,7 +1502,7 @@ yyreduce:
     {
 		printf("Pushing  %s %s\n", (char*)(yyvsp[(1) - (2)].svalue), (char*)(yyvsp[(2) - (2)].svalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_DECOMPOSE_INDEX, 1, (char*)(yyvsp[(2) - (2)].svalue));
+		pushToInterpreter(COMMAND_DECOMPOSE_INDEX, 1, (char*)(yyvsp[(2) - (2)].svalue));
 	}
     break;
 
@@ -1512,7 +1512,7 @@ yyreduce:
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
-		pushStructToInterpreter(COMMAND_DESATURATE_INDEX, 0);
+		pushToInterpreter(COMMAND_DESATURATE_INDEX, 0);
 	}
     break;
 
@@ -1522,7 +1522,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_DIFFUSE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_DIFFUSE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1532,7 +1532,7 @@ yyreduce:
     {
 		printf("Pushing  %s %f\n", (char*)(yyvsp[(1) - (2)].svalue), (double)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_GAMMA_INDEX, 1, (double)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_GAMMA_INDEX, 1, (double)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1542,7 +1542,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].cvalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (char)(yyvsp[(2) - (2)].cvalue));
+		pushToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (char)(yyvsp[(2) - (2)].cvalue));
 	}
     break;
 
@@ -1552,7 +1552,7 @@ yyreduce:
     {
 		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
-		pushStructToInterpreter(COMMAND_INVERT_INDEX, 0);
+		pushToInterpreter(COMMAND_INVERT_INDEX, 0);
 	}
     break;
 
@@ -1562,7 +1562,7 @@ yyreduce:
     {
 		printf("Pushing  %s %f %f %f\n", (char*)(yyvsp[(1) - (4)].svalue), (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
 		free((yyvsp[(1) - (4)].svalue));
-		pushStructToInterpreter(COMMAND_LUMINANCE_INDEX, 3, (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
+		pushToInterpreter(COMMAND_LUMINANCE_INDEX, 3, (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
 	}
     break;
 
@@ -1572,7 +1572,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_PIXELATE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_PIXELATE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1582,7 +1582,7 @@ yyreduce:
     {
 		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushStructToInterpreter(COMMAND_REDUCE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_REDUCE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
     break;
 
@@ -1591,7 +1591,7 @@ yyreduce:
 #line 203 "Bison Flex\\parser.y"
     {
 		printf("Pushing  %s %c\n", (char*)(yyvsp[(1) - (2)].svalue), (char)(yyvsp[(2) - (2)].cvalue));
-		pushStructToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (unsigned char)(yyvsp[(2) - (2)].cvalue));
+		pushToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (unsigned char)(yyvsp[(2) - (2)].cvalue));
 	}
     break;
 
@@ -1601,7 +1601,7 @@ yyreduce:
     {
 		printf("Pushing  %s %c\n", (char*)(yyvsp[(1) - (3)].svalue), (unsigned char)(yyvsp[(2) - (3)].svalue));
 		free((yyvsp[(1) - (3)].svalue));
-		pushStructToInterpreter(COMMAND_SOLARISE_INDEX, 1, (char*)(yyvsp[(2) - (3)].svalue), (unsigned char)(yyvsp[(3) - (3)].cvalue));
+		pushToInterpreter(COMMAND_SOLARISE_INDEX, 1, (char*)(yyvsp[(2) - (3)].svalue), (unsigned char)(yyvsp[(3) - (3)].cvalue));
 	}
     break;
 

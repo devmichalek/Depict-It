@@ -17,37 +17,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header Files\grayscale.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header Files\lodepng.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\error_diffusion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\inversion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\solarisation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\brightness.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\contrast.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\color_reduction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\gamma_correction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\blur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\semantic.h">
@@ -56,11 +29,14 @@
     <ClInclude Include="Generated\parser.tab.h">
       <Filter>Generated</Filter>
     </ClInclude>
+    <ClInclude Include="Header Files\process.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\idx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source Files\grayscale.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\lodepng.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -70,28 +46,7 @@
     <ClCompile Include="Source Files\image.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\error_diffusion.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\inversion.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\solarisation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\brightness.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\contrast.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\color_reduction.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\gamma_correction.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\blur.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source Files\semantic.c">
@@ -102,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="Generated\parser.tab.c">
       <Filter>Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\process.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
