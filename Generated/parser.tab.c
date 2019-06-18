@@ -395,7 +395,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  35
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   77
+#define YYLAST   76
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  24
@@ -471,20 +471,20 @@ static const yytype_int8 yyrhs[] =
       34,    -1,    35,    -1,    36,    -1,    37,    -1,    38,    -1,
       39,    -1,    40,    -1,    41,    -1,    42,    -1,     9,    -1,
       10,     3,    -1,    11,     3,    -1,    12,     3,    -1,    13,
-       6,    -1,    14,    -1,    15,     3,    -1,    16,     3,    -1,
-      17,     5,    -1,    18,    -1,    19,     4,     4,     4,    -1,
+       6,    -1,    14,    -1,    15,     3,    -1,    16,     4,    -1,
+      17,     3,    -1,    18,    -1,    19,     4,     4,     4,    -1,
       20,     3,    -1,    21,     3,    -1,    22,     5,    -1,    23,
-       6,     5,    -1
+       3,     6,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    42,    42,    48,    54,    65,    66,    67,    68,    69,
-      70,    71,    72,    73,    74,    75,    76,    77,    78,    79,
-      80,    81,    82,    83,    84,    85,    86,    87,    88,    89,
-      90,    91,    92,    93,    94,    99,   107,   115,   123,   131,
-     139,   147,   155,   163,   171,   179,   187,   195,   203,   210
+       0,    42,    42,    52,    57,    66,    67,    68,    69,    70,
+      71,    72,    73,    74,    75,    76,    77,    78,    79,    80,
+      81,    82,    83,    84,    85,    86,    87,    88,    89,    90,
+      91,    92,    93,    94,    95,   100,   108,   120,   128,   136,
+     144,   152,   164,   172,   184,   192,   200,   212,   224,   231
 };
 #endif
 
@@ -565,10 +565,10 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yypact[] =
 {
       -6,     8,    32,    25,    -8,    31,    33,    34,    29,    -8,
-      35,    36,    37,    -8,    39,    38,    41,    40,    42,    -7,
+      35,    36,    38,    -8,    39,    41,    42,    37,    43,    -7,
       -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,
       -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,
-      -8,    -8,    -8,    -8,    43,    -8,    -8,    -8,    44,    -8,
+      -8,    -8,    -8,    -8,    44,    -8,    -8,    -8,    45,    -8,
       -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,    -8,
       -8,    -8,    -8,    -8,    -8,    46,    -8,    -8
 };
@@ -576,8 +576,8 @@ static const yytype_int8 yypact[] =
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -8,    -8,    -8,    -8,    21,    27,    45,    47,    48,    49,
-      50,    51,    52,    53,    54,    55,    56,    57,    58
+      -8,    -8,    -8,    -8,    20,    28,    30,    40,    47,    48,
+      49,    50,    51,    52,    53,    54,    55,    56,    57
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -589,11 +589,11 @@ static const yytype_uint8 yytable[] =
       49,     1,     4,     5,     6,     7,     8,     9,    10,    11,
       12,    13,    14,    15,    16,    17,    18,     4,     5,     6,
        7,     8,     9,    10,    11,    12,    13,    14,    15,    16,
-      17,    18,    35,    36,    37,    40,    38,    39,    41,    42,
-      50,    45,    43,    44,    46,    47,    51,    65,    48,    66,
-      67,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    52,     0,    53,    54,    55,    56,
-      57,    58,    59,    60,    61,    62,    63,    64
+      17,    18,    35,    36,    37,    40,    38,    39,    41,    50,
+      42,    43,    47,    44,    45,    46,    48,    51,    65,    52,
+      67,    66,     0,     0,     0,     0,     0,     0,     0,    53,
+       0,     0,     0,     0,     0,     0,    54,    55,    56,    57,
+      58,    59,    60,    61,    62,    63,    64
 };
 
 #define yypact_value_is_default(Yystate) \
@@ -607,11 +607,11 @@ static const yytype_int8 yycheck[] =
        7,     7,     9,    10,    11,    12,    13,    14,    15,    16,
       17,    18,    19,    20,    21,    22,    23,     9,    10,    11,
       12,    13,    14,    15,    16,    17,    18,    19,    20,    21,
-      22,    23,     0,     8,     3,     6,     3,     3,     3,     3,
-      19,     3,     5,     4,     3,     5,    19,     4,     6,     5,
-       4,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    19,    -1,    19,    19,    19,    19,
-      19,    19,    19,    19,    19,    19,    19,    19
+      22,    23,     0,     8,     3,     6,     3,     3,     3,    19,
+       4,     3,     5,     4,     3,     3,     3,    19,     4,    19,
+       4,     6,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    19,
+      -1,    -1,    -1,    -1,    -1,    -1,    19,    19,    19,    19,
+      19,    19,    19,    19,    19,    19,    19
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -622,9 +622,9 @@ static const yytype_uint8 yystos[] =
       15,    16,    17,    18,    19,    20,    21,    22,    23,    27,
       28,    29,    30,    31,    32,    33,    34,    35,    36,    37,
       38,    39,    40,    41,    42,     0,     8,     3,     3,     3,
-       6,     3,     3,     5,     4,     3,     3,     5,     6,     7,
+       6,     3,     4,     3,     4,     3,     3,     5,     3,     7,
       28,    29,    30,    31,    32,    33,    34,    35,    36,    37,
-      38,    39,    40,    41,    42,     4,     5,     4
+      38,    39,    40,    41,    42,     4,     6,     4
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1428,39 +1428,40 @@ yyreduce:
 /* Line 1792 of yacc.c  */
 #line 42 "Bison Flex\\parser.y"
     {
-		printf("Starting process...\n");
+		printf("Starting interpreter process...\n");
+		if (runInterpreter())
+			printf("Error: Interpreter process failed...\n");
+		else
+			printf("Succes: Interpreter process finished with success!\n");
 	}
     break;
 
   case 3:
 /* Line 1792 of yacc.c  */
-#line 48 "Bison Flex\\parser.y"
+#line 52 "Bison Flex\\parser.y"
     {
 		printf("Input and Output specified as \"%s\"\n", (char*)(yyvsp[(1) - (2)].svalue));
 		setInputFilename((char*)(yyvsp[(1) - (2)].svalue));
 		setOutputFilename((char*)(yyvsp[(1) - (2)].svalue));
-		free((yyvsp[(1) - (2)].svalue));
 	}
     break;
 
   case 4:
 /* Line 1792 of yacc.c  */
-#line 54 "Bison Flex\\parser.y"
+#line 57 "Bison Flex\\parser.y"
     {
 		printf("Input specified as \"%s\"\n", (char*)(yyvsp[(1) - (3)].svalue));
 		printf("Output specified as \"%s\"\n", (char*)(yyvsp[(3) - (3)].svalue));
 		setInputFilename((char*)(yyvsp[(1) - (3)].svalue));
 		setOutputFilename((char*)(yyvsp[(3) - (3)].svalue));
-		free((yyvsp[(1) - (3)].svalue));
-		free((yyvsp[(3) - (3)].svalue));
 	}
     break;
 
   case 35:
 /* Line 1792 of yacc.c  */
-#line 99 "Bison Flex\\parser.y"
+#line 100 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
+		printf("Pushing %s state...\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
 		pushToInterpreter(COMMAND_AVERAGE_INDEX, 0);
 	}
@@ -1468,19 +1469,23 @@ yyreduce:
 
   case 36:
 /* Line 1792 of yacc.c  */
-#line 107 "Bison Flex\\parser.y"
+#line 108 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		int arg = (int)(yyvsp[(2) - (2)].ivalue);
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), arg);
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_BLUR_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_BLUR_INDEX, 1, (unsigned)arg);
+		else
+			printf("Error: Cannot execute Blur algorithm because its argument is negative...\n");
 	}
     break;
 
   case 37:
 /* Line 1792 of yacc.c  */
-#line 115 "Bison Flex\\parser.y"
+#line 120 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
 		pushToInterpreter(COMMAND_BRIGHTEN_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
@@ -1488,9 +1493,9 @@ yyreduce:
 
   case 38:
 /* Line 1792 of yacc.c  */
-#line 123 "Bison Flex\\parser.y"
+#line 128 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
 		free((yyvsp[(1) - (2)].svalue));
 		pushToInterpreter(COMMAND_CONTRAST_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
 	}
@@ -1498,9 +1503,9 @@ yyreduce:
 
   case 39:
 /* Line 1792 of yacc.c  */
-#line 131 "Bison Flex\\parser.y"
+#line 136 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %s\n", (char*)(yyvsp[(1) - (2)].svalue), (char*)(yyvsp[(2) - (2)].svalue));
+		printf("Pushing %s %s state...\n", (char*)(yyvsp[(1) - (2)].svalue), (char*)(yyvsp[(2) - (2)].svalue));
 		free((yyvsp[(1) - (2)].svalue));
 		pushToInterpreter(COMMAND_DECOMPOSE_INDEX, 1, (char*)(yyvsp[(2) - (2)].svalue));
 	}
@@ -1508,9 +1513,9 @@ yyreduce:
 
   case 40:
 /* Line 1792 of yacc.c  */
-#line 139 "Bison Flex\\parser.y"
+#line 144 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
+		printf("Pushing %s state...\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
 		pushToInterpreter(COMMAND_DESATURATE_INDEX, 0);
 	}
@@ -1518,39 +1523,47 @@ yyreduce:
 
   case 41:
 /* Line 1792 of yacc.c  */
-#line 147 "Bison Flex\\parser.y"
+#line 152 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		int arg = (int)(yyvsp[(2) - (2)].ivalue);
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), (int)arg);
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_DIFFUSE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_DIFFUSE_INDEX, 1, (unsigned)arg);
+		else
+			printf("Error: Cannot execute Diffuse algorithm because its argument is negative...\n");
 	}
     break;
 
   case 42:
 /* Line 1792 of yacc.c  */
-#line 155 "Bison Flex\\parser.y"
+#line 164 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %f\n", (char*)(yyvsp[(1) - (2)].svalue), (double)(yyvsp[(2) - (2)].ivalue));
+		printf("Pushing %s %f state...\n", (char*)(yyvsp[(1) - (2)].svalue), (double)(yyvsp[(2) - (2)].fvalue));
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_GAMMA_INDEX, 1, (double)(yyvsp[(2) - (2)].ivalue));
+		pushToInterpreter(COMMAND_GAMMA_INDEX, 1, (double)(yyvsp[(2) - (2)].fvalue));
 	}
     break;
 
   case 43:
 /* Line 1792 of yacc.c  */
-#line 163 "Bison Flex\\parser.y"
+#line 172 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].cvalue));
+		int arg = (int)(yyvsp[(2) - (2)].ivalue);
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), arg);
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (char)(yyvsp[(2) - (2)].cvalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (unsigned)arg);
+		else
+			printf("Error: Cannot execute Grayshade algorithm because its argument is negative...\n");
 	}
     break;
 
   case 44:
 /* Line 1792 of yacc.c  */
-#line 171 "Bison Flex\\parser.y"
+#line 184 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s\n", (char*)(yyvsp[(1) - (1)].svalue));
+		printf("Pushing %s state...\n", (char*)(yyvsp[(1) - (1)].svalue));
 		free((yyvsp[(1) - (1)].svalue));
 		pushToInterpreter(COMMAND_INVERT_INDEX, 0);
 	}
@@ -1558,9 +1571,9 @@ yyreduce:
 
   case 45:
 /* Line 1792 of yacc.c  */
-#line 179 "Bison Flex\\parser.y"
+#line 192 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %f %f %f\n", (char*)(yyvsp[(1) - (4)].svalue), (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
+		printf("Pushing %s %f %f %f state...\n", (char*)(yyvsp[(1) - (4)].svalue), (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
 		free((yyvsp[(1) - (4)].svalue));
 		pushToInterpreter(COMMAND_LUMINANCE_INDEX, 3, (float)(yyvsp[(2) - (4)].fvalue), (float)(yyvsp[(3) - (4)].fvalue), (float)(yyvsp[(4) - (4)].fvalue));
 	}
@@ -1568,46 +1581,58 @@ yyreduce:
 
   case 46:
 /* Line 1792 of yacc.c  */
-#line 187 "Bison Flex\\parser.y"
+#line 200 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		int arg = (int)(yyvsp[(2) - (2)].ivalue);
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), arg);
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_PIXELATE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_PIXELATE_INDEX, 1, (unsigned)arg);
+		else
+			printf("Error: Cannot execute Pixelate algorithm because its argument is negative...\n");
 	}
     break;
 
   case 47:
 /* Line 1792 of yacc.c  */
-#line 195 "Bison Flex\\parser.y"
+#line 212 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %d\n", (char*)(yyvsp[(1) - (2)].svalue), (int)(yyvsp[(2) - (2)].ivalue));
+		int arg = (int)(yyvsp[(2) - (2)].ivalue);
+		printf("Pushing %s %d state...\n", (char*)(yyvsp[(1) - (2)].svalue), arg);
 		free((yyvsp[(1) - (2)].svalue));
-		pushToInterpreter(COMMAND_REDUCE_INDEX, 1, (int)(yyvsp[(2) - (2)].ivalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_REDUCE_INDEX, 1, (unsigned)arg);
+		else
+			printf("Error: Cannot execute Reduce algorithm because its argument is negative...\n");
 	}
     break;
 
   case 48:
 /* Line 1792 of yacc.c  */
-#line 203 "Bison Flex\\parser.y"
+#line 224 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %c\n", (char*)(yyvsp[(1) - (2)].svalue), (char)(yyvsp[(2) - (2)].cvalue));
-		pushToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (unsigned char)(yyvsp[(2) - (2)].cvalue));
+		printf("Pushing %s %c state...\n", (char*)(yyvsp[(1) - (2)].svalue), (char)(yyvsp[(2) - (2)].cvalue));
+		pushToInterpreter(COMMAND_SINGLECHANNEL_INDEX, 1, (char)(yyvsp[(2) - (2)].cvalue));
 	}
     break;
 
   case 49:
 /* Line 1792 of yacc.c  */
-#line 210 "Bison Flex\\parser.y"
+#line 231 "Bison Flex\\parser.y"
     {
-		printf("Pushing  %s %c\n", (char*)(yyvsp[(1) - (3)].svalue), (unsigned char)(yyvsp[(2) - (3)].svalue));
+		int arg = (int)(yyvsp[(2) - (3)].ivalue);
+		printf("Pushing %s %d %s state...\n", (char*)(yyvsp[(1) - (3)].svalue), arg, (char*)(yyvsp[(3) - (3)].svalue));
 		free((yyvsp[(1) - (3)].svalue));
-		pushToInterpreter(COMMAND_SOLARISE_INDEX, 1, (char*)(yyvsp[(2) - (3)].svalue), (unsigned char)(yyvsp[(3) - (3)].cvalue));
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_SOLARISE_INDEX, 2, (unsigned)arg, (char*)(yyvsp[(3) - (3)].svalue));
+		else
+			printf("Error: Cannot execute Solarise algorithm because its argument is negative...\n");
 	}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1611 "Generated\\parser.tab.c"
+#line 1636 "Generated\\parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1839,16 +1864,12 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 216 "Bison Flex\\parser.y"
+#line 241 "Bison Flex\\parser.y"
 
 
 void yyerror(const char* str)
 {
-	printf("EEK, parse error!\nMessage: %s\n", str);
-	printf("Press enter to continue...\n");
-	char enter = 0;
-	while (enter != '\r' && enter != '\n')
-		enter = getchar();
+	printf("Error: Parse error...\n");
 }
 
 int parse()
