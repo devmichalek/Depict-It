@@ -16,8 +16,8 @@ FNAME ({WORD}\.png)|({CHARACTER}\.png)
 %%
 [ \t]			;
 \n				{ yylval.svalue = fix_strdup(yytext); return ENDL; }
-[0-9]+          { yylval.ivalue = atoi(yytext); return INT; }
-[0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
+\-?[0-9]+			{ yylval.ivalue = atoi(yytext); return INT; }
+\-?[0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
 {FNAME}			{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
 {CHARACTER}		{ yylval.cvalue = (char)atoi(yytext); return CHAR; }
