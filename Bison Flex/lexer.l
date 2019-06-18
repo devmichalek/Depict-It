@@ -1,6 +1,7 @@
 %{
 	#include "parser.tab.h"
 	#include <stdio.h>
+	#include "semantic.h"
 
 #ifdef _WINDOWS
 #define fix_strdup(X) _strdup(X)
@@ -9,17 +10,17 @@
 #endif
 %}
 %option noyywrap
-WORD [a-zA-Z0-9]+
-CHARACTER [a-zA-Z]
+WORD [a-zA-Z0-9]{2,}
+CHARACTER [a-zA-Z0-9]{1}
+FNAME ({WORD}\.png)|({CHARACTER}\.png)
 %%
 [ \t]			;
-\n				{  yylval.svalue = fix_strdup(yytext); return ENDL; }
+\n				{ yylval.svalue = fix_strdup(yytext); return ENDL; }
 [0-9]+          { yylval.ivalue = atoi(yytext); return INT; }
 [0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
-{WORD}\.png		{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
+{FNAME}			{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
 {CHARACTER}		{ yylval.cvalue = (char)atoi(yytext); return CHAR; }
-
 \-average		{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 \-blur			{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
 \-brighten		{ yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
@@ -36,12 +37,13 @@ CHARACTER [a-zA-Z]
 \-singlechannel	{ yylval.svalue = fix_strdup(yytext); return COMMAND_SINGLECHANNEL; }
 \-solarise		{ yylval.svalue = fix_strdup(yytext); return COMMAND_SOLARISE; }
 
+\-exit			{
+					gInterpreter.exitState = 1;
+					yyterminate();
+
+				}
 .				{
 					printf("Error: Unrecognized token occured\n");
-					printf("Press enter to continue...\n");
-					char enter = 0;
-					while (enter != '\r' && enter != '\n')
-						enter = getchar();
 					yyterminate();
 				}
 %%
