@@ -1,5 +1,6 @@
 #include "semantic.h"
 #include "process.h"
+#include "image.h"
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -10,34 +11,24 @@ void initInterpreter()
 	gInterpreter.width = 0;
 	gInterpreter.height = 0;
 	gInterpreter.image = NULL;
-	gInterpreter.input[0] = 0;
-	gInterpreter.output[0] = 0;
+	gInterpreter.input = NULL;
+	gInterpreter.output = NULL;
+	gInterpreter.inputAsOutput = 0;
+	gInterpreter.exitState = 0;
 	gInterpreter.tree = NULL;
 }
 
 int setInputFilename(char* ptr)
 {
-	size_t length = strlen(ptr);
-	if (length > 2048)
-	{
-		printf("Error: Input filename %s is too long for buffer\n", ptr);
-		return 1;
-	}
-
-	strcpy(gInterpreter.input, ptr);
+	gInterpreter.input = ptr;
 	return 0;
 }
 
 int setOutputFilename(char* ptr)
 {
-	size_t length = strlen(ptr);
-	if (length > 2048)
-	{
-		printf("Error: Output filename %s is too long for buffer\n", ptr);
-		return 1;
-	}
-
-	strcpy(gInterpreter.output, ptr);
+	gInterpreter.output = ptr;
+	if (!strcmp(gInterpreter.input, gInterpreter.output))
+		gInterpreter.inputAsOutput = 1;
 	return 0;
 }
 
@@ -61,7 +52,7 @@ int pushToInterpreter(int index, int count, ...)
 		//case COMMAND_AVERAGE_INDEX:
 		case COMMAND_BLUR_INDEX:
 			(*current)->ptrToStruct = (Blur*)malloc(sizeof(Blur));
-			((Blur*)(*current)->ptrToStruct)->size = va_arg(ap, int);
+			((Blur*)(*current)->ptrToStruct)->asis = va_arg(ap, unsigned);
 			break;
 		case COMMAND_BRIGHTEN_INDEX:
 			(*current)->ptrToStruct = (Brighten*)malloc(sizeof(Brighten));
@@ -73,12 +64,12 @@ int pushToInterpreter(int index, int count, ...)
 			break;
 		case COMMAND_DECOMPOSE_INDEX:
 			(*current)->ptrToStruct = (Decompose*)malloc(sizeof(Decompose));
-			((Decompose*)(*current)->ptrToStruct)->functionName = va_arg(ap, unsigned char*);
+			((Decompose*)(*current)->ptrToStruct)->fname = va_arg(ap, char*);
 			break;
 		//case COMMAND_DESATURATE_INDEX:
 		case COMMAND_DIFFUSE_INDEX:
 			(*current)->ptrToStruct = (Diffuse*)malloc(sizeof(Diffuse));
-			((Diffuse*)(*current)->ptrToStruct)->level = va_arg(ap, int);
+			((Diffuse*)(*current)->ptrToStruct)->count = va_arg(ap, unsigned);
 			break;
 		case COMMAND_GAMMA_INDEX:
 			(*current)->ptrToStruct = (Gamma*)malloc(sizeof(Gamma));
@@ -86,31 +77,31 @@ int pushToInterpreter(int index, int count, ...)
 			break;
 		case COMMAND_GRAYSHADE_INDEX:
 			(*current)->ptrToStruct = (GrayShade*)malloc(sizeof(GrayShade));
-			((GrayShade*)(*current)->ptrToStruct)->shades = va_arg(ap, unsigned char);
+			((GrayShade*)(*current)->ptrToStruct)->count = va_arg(ap, unsigned);
 			break;
 		//case COMMAND_INVERT_INDEX:
 		case COMMAND_LUMINANCE_INDEX:
 			(*current)->ptrToStruct = (Luminance*)malloc(sizeof(Luminance));
-			((Luminance*)(*current)->ptrToStruct)->redRatio = va_arg(ap, float);
-			((Luminance*)(*current)->ptrToStruct)->greenRatio = va_arg(ap, float);
-			((Luminance*)(*current)->ptrToStruct)->blueRatio = va_arg(ap, float);
+			((Luminance*)(*current)->ptrToStruct)->red_ratio = va_arg(ap, float);
+			((Luminance*)(*current)->ptrToStruct)->green_ratio = va_arg(ap, float);
+			((Luminance*)(*current)->ptrToStruct)->blue_ratio = va_arg(ap, float);
 			break;
 		case COMMAND_PIXELATE_INDEX:
 			(*current)->ptrToStruct = (Pixelate*)malloc(sizeof(Pixelate));
-			((Pixelate*)(*current)->ptrToStruct)->size = va_arg(ap, int);
+			((Pixelate*)(*current)->ptrToStruct)->pixel_size = va_arg(ap, unsigned);
 			break;
 		case COMMAND_REDUCE_INDEX:
 			(*current)->ptrToStruct = (Reduce*)malloc(sizeof(Reduce));
-			((Reduce*)(*current)->ptrToStruct)->level = va_arg(ap, int);
+			((Reduce*)(*current)->ptrToStruct)->count = va_arg(ap, unsigned);
 			break;
 		case COMMAND_SINGLECHANNEL_INDEX:
 			(*current)->ptrToStruct = (SingleChannel*)malloc(sizeof(SingleChannel));
-			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, unsigned char);
+			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, char);
 			break;
 		case COMMAND_SOLARISE_INDEX:
 			(*current)->ptrToStruct = (Solarise*)malloc(sizeof(Solarise));
-			((Solarise*)(*current)->ptrToStruct)->functionName = va_arg(ap, unsigned char*);
-			((Solarise*)(*current)->ptrToStruct)->threshold = va_arg(ap, unsigned char);
+			((Solarise*)(*current)->ptrToStruct)->threshold = va_arg(ap, unsigned);
+			((Solarise*)(*current)->ptrToStruct)->fname = va_arg(ap, char*);
 			break;
 		default:
 			va_end(ap);
@@ -127,63 +118,262 @@ int popFromInterpreter(Node** node)
 	switch ((*node)->index)
 	{
 		case COMMAND_AVERAGE_INDEX:
-			average(&gInterpreter.image, gInterpreter.width, gInterpreter.height);
+			if (average(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			{
+				printf("Error: Average algorithm failed...\n");
+				return 1;
+			}
 			break;
+
 		case COMMAND_BLUR_INDEX:
-			(*current)->ptrToStruct = (Blur*)malloc(sizeof(Blur));
-			((Blur*)(*current)->ptrToStruct)->size = va_arg(ap, int);
+			if (blur(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Blur*)(*node)->ptrToStruct)->asis))
+			{
+				printf("Error: Blur algorithm failed...\n");
+				return 1;
+			}
+			free((Blur*)(*node)->ptrToStruct);
 			break;
-	case COMMAND_BRIGHTEN_INDEX:
-		(*current)->ptrToStruct = (Brighten*)malloc(sizeof(Brighten));
-		((Brighten*)(*current)->ptrToStruct)->level = va_arg(ap, int);
-		break;
-	case COMMAND_CONTRAST_INDEX:
-		(*current)->ptrToStruct = (Contrast*)malloc(sizeof(Contrast));
-		((Contrast*)(*current)->ptrToStruct)->level = va_arg(ap, int);
-		break;
-	case COMMAND_DECOMPOSE_INDEX:
-		(*current)->ptrToStruct = (Decompose*)malloc(sizeof(Decompose));
-		((Decompose*)(*current)->ptrToStruct)->functionName = va_arg(ap, unsigned char*);
-		break;
-		//case COMMAND_DESATURATE_INDEX:
-	case COMMAND_DIFFUSE_INDEX:
-		(*current)->ptrToStruct = (Diffuse*)malloc(sizeof(Diffuse));
-		((Diffuse*)(*current)->ptrToStruct)->level = va_arg(ap, int);
-		break;
-	case COMMAND_GAMMA_INDEX:
-		(*current)->ptrToStruct = (Gamma*)malloc(sizeof(Gamma));
-		((Gamma*)(*current)->ptrToStruct)->ratio = va_arg(ap, double);
-		break;
-	case COMMAND_GRAYSHADE_INDEX:
-		(*current)->ptrToStruct = (GrayShade*)malloc(sizeof(GrayShade));
-		((GrayShade*)(*current)->ptrToStruct)->shades = va_arg(ap, unsigned char);
-		break;
-		//case COMMAND_INVERT_INDEX:
-	case COMMAND_LUMINANCE_INDEX:
-		(*current)->ptrToStruct = (Luminance*)malloc(sizeof(Luminance));
-		((Luminance*)(*current)->ptrToStruct)->redRatio = va_arg(ap, float);
-		((Luminance*)(*current)->ptrToStruct)->greenRatio = va_arg(ap, float);
-		((Luminance*)(*current)->ptrToStruct)->blueRatio = va_arg(ap, float);
-		break;
-	case COMMAND_PIXELATE_INDEX:
-		(*current)->ptrToStruct = (Pixelate*)malloc(sizeof(Pixelate));
-		((Pixelate*)(*current)->ptrToStruct)->size = va_arg(ap, int);
-		break;
-	case COMMAND_REDUCE_INDEX:
-		(*current)->ptrToStruct = (Reduce*)malloc(sizeof(Reduce));
-		((Reduce*)(*current)->ptrToStruct)->level = va_arg(ap, int);
-		break;
-	case COMMAND_SINGLECHANNEL_INDEX:
-		(*current)->ptrToStruct = (SingleChannel*)malloc(sizeof(SingleChannel));
-		((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, unsigned char);
-		break;
-	case COMMAND_SOLARISE_INDEX:
-		(*current)->ptrToStruct = (Solarise*)malloc(sizeof(Solarise));
-		((Solarise*)(*current)->ptrToStruct)->functionName = va_arg(ap, unsigned char*);
-		((Solarise*)(*current)->ptrToStruct)->threshold = va_arg(ap, unsigned char);
-		break;
+
+		case COMMAND_BRIGHTEN_INDEX:
+			if (brighten(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Brighten*)(*node)->ptrToStruct)->level))
+			{
+				printf("Error: Brighten algorithm failed...\n");
+				return 1;
+			}
+			free((Brighten*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_CONTRAST_INDEX:
+			if (contrast(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Contrast*)(*node)->ptrToStruct)->level))
+			{
+				printf("Error: Contrast algorithm failed...\n");
+				return 1;
+			}
+			free((Contrast*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_DECOMPOSE_INDEX:
+			if (decompose(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Decompose*)(*node)->ptrToStruct)->fname))
+			{
+				printf("Error: Decompose algorithm failed...\n");
+				return 1;
+			}
+			free(((Decompose*)(*node)->ptrToStruct)->fname);
+			free((Decompose*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_DESATURATE_INDEX:
+			if (desaturate(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			{
+				printf("Error: Desaturate algorithm failed...\n");
+				return 1;
+			}
+			break;
+
+		case COMMAND_DIFFUSE_INDEX:
+			if (diffuse(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Diffuse*)(*node)->ptrToStruct)->count))
+			{
+				printf("Error: Diffuse algorithm failed...\n");
+				return 1;
+			}
+			free((Diffuse*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_GAMMA_INDEX:
+			if (gamma(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Gamma*)(*node)->ptrToStruct)->ratio))
+			{
+				printf("Error: Gamma algorithm failed...\n");
+				return 1;
+			}
+			free((Gamma*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_GRAYSHADE_INDEX:
+			if (grayshade(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((GrayShade*)(*node)->ptrToStruct)->count))
+			{
+				printf("Error: Grayshade algorithm failed...\n");
+				return 1;
+			}
+			free((GrayShade*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_INVERT_INDEX:
+			if (invert(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			{
+				printf("Error: Invert algorithm failed...\n");
+				return 1;
+			}
+			break;
+
+		case COMMAND_LUMINANCE_INDEX:
+			if (luminance(	&gInterpreter.image,
+							gInterpreter.width,
+							gInterpreter.height,
+							((Luminance*)(*node)->ptrToStruct)->red_ratio,
+							((Luminance*)(*node)->ptrToStruct)->green_ratio,
+							((Luminance*)(*node)->ptrToStruct)->blue_ratio))
+			{
+				printf("Error: Luminance algorithm failed...\n");
+				return 1;
+			}
+			free((Luminance*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_PIXELATE_INDEX:
+			if (pixelate(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Pixelate*)(*node)->ptrToStruct)->pixel_size))
+			{
+				printf("Error: Pixelate algorithm failed...\n");
+				return 1;
+			}
+			free((Pixelate*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_REDUCE_INDEX:
+			if (reduce(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Reduce*)(*node)->ptrToStruct)->count))
+			{
+				printf("Error: Reduce algorithm failed...\n");
+				return 1;
+			}
+			free((Reduce*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_SINGLECHANNEL_INDEX:
+			if (singlechannel(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((SingleChannel*)(*node)->ptrToStruct)->channel))
+			{
+				printf("Error: Singlechannel algorithm failed...\n");
+				return 1;
+			}
+			free((SingleChannel*)(*node)->ptrToStruct);
+			break;
+
+		case COMMAND_SOLARISE_INDEX:
+			if (solarise(	&gInterpreter.image,
+							gInterpreter.width,
+							gInterpreter.height,
+							((Solarise*)(*node)->ptrToStruct)->threshold,
+							((Solarise*)(*node)->ptrToStruct)->fname))
+			{
+				printf("Error: Solarise algorithm failed...\n");
+				return 1;
+			}
+			free(((Solarise*)(*node)->ptrToStruct)->fname);
+			free((Solarise*)(*node)->ptrToStruct);
+			break;
 	}
 
 	free(*node);
+	*node = NULL;
+	return 0;
+}
+
+void escapeFromInterpreter(Node** node)
+{
+	switch ((*node)->index)
+	{
+		//case COMMAND_AVERAGE_INDEX:
+		case COMMAND_BLUR_INDEX:
+			free((Blur*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_BRIGHTEN_INDEX:
+			free((Brighten*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_CONTRAST_INDEX:
+			free((Contrast*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_DECOMPOSE_INDEX:
+			free(((Decompose*)(*node)->ptrToStruct)->fname);
+			free((Decompose*)(*node)->ptrToStruct);
+			break;
+		//case COMMAND_DESATURATE_INDEX:
+		case COMMAND_DIFFUSE_INDEX:
+			free((Diffuse*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_GAMMA_INDEX:
+			free((Gamma*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_GRAYSHADE_INDEX:
+			free((GrayShade*)(*node)->ptrToStruct);
+			break;
+		//case COMMAND_INVERT_INDEX:
+		case COMMAND_LUMINANCE_INDEX:
+			free((Luminance*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_PIXELATE_INDEX:
+			free((Pixelate*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_REDUCE_INDEX:
+			free((Reduce*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_SINGLECHANNEL_INDEX:
+			free((SingleChannel*)(*node)->ptrToStruct);
+			break;
+		case COMMAND_SOLARISE_INDEX:
+			free(((Solarise*)(*node)->ptrToStruct)->fname);
+			free((Solarise*)(*node)->ptrToStruct);
+			break;
+	}
+
+	free(*node);
+	*node = NULL;
+}
+
+int runInterpreter()
+{
+	int escape = 0;
+
+	// Opening file...
+	if (load_image(	gInterpreter.input,
+					&gInterpreter.image,
+					&gInterpreter.width,
+					&gInterpreter.height))
+		escape = 1;
+
+	Node* ptr = gInterpreter.tree;
+	if (!escape)
+		while (ptr)
+		{
+			Node* nextPtr = ptr->next;
+			if (popFromInterpreter(&ptr))
+			{
+				printf("Warning: Killing interpreter state...\n");
+				escape = 1;
+				break;
+			}
+			ptr = nextPtr;
+		}
+
+	if (escape)
+	{
+		while (ptr)
+		{
+			Node* nextPtr = ptr->next;
+			escapeFromInterpreter(&ptr);
+			ptr = nextPtr;
+		}
+
+		return 1;
+	}
+	else
+	{
+		if (save_image(gInterpreter.output,
+			gInterpreter.image,
+			gInterpreter.width,
+			gInterpreter.height))
+			printf("Error: Process of saving image failed...\n");
+		destroy_image(&gInterpreter.image);
+	}
+
+	free(gInterpreter.input);
+	if (!gInterpreter.inputAsOutput)
+		free(gInterpreter.output);
+
+	gInterpreter.width = 0;
+	gInterpreter.height = 0;
+	gInterpreter.image = NULL;
+	gInterpreter.input = NULL;
+	gInterpreter.output = NULL;
+	gInterpreter.inputAsOutput = 0;
+	gInterpreter.exitState = 0;
+	gInterpreter.tree = NULL;
 	return 0;
 }
