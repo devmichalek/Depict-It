@@ -649,17 +649,18 @@ int singlechannel(unsigned char** image, unsigned width, unsigned height, char c
 	return 0;
 }
 
-int solarise(unsigned char** image, unsigned width, unsigned height, unsigned threshold, char* fname)
+int solarise(unsigned char** image, unsigned width, unsigned height, unsigned th, char* fname)
 {	/*Arguments: image, width, height, function name above/below*/
 	if (quick_image_check(*image, width, height))
 		return 1;
 
-	if (threshold > 0xFF)
+	if (th > 0xFF)
 	{
 		printf("Warning: Threshold is too great for Solarise algorithm, reducing threshold...\n");
-		threshold = 0xFF;
+		th = 0xFF;
 	}
 
+	unsigned char threshold = (unsigned char)th;
 	int(*fun)(unsigned char*, unsigned char*) = below_threshold;
 	if (!fname)
 		printf("Warning: Function name for Solarise algorithm is not set... choosing below function\n");
