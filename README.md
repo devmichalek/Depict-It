@@ -7,18 +7,18 @@ Depict-It contains combination of the most basic and the most popular image proc
 ```-average``` - grays the image by averaging RGB channels of the image.<br>
 ```-blur <matrix size>``` - blurs the image with given matrix size (Gaussian Blur Algorithm).<br>
 ```-brighten <level>``` - brightens the image with positive values (max 255) or dims it with negative values (min -255).<br>
-```-contrast <level>``` - make image more contrast (positive values up to 255) or more smear (negative values down to -255).<br>
+```-contrast <level>``` - makes image more contrast (positive values up to 255) or more smear (negative values down to -255).<br>
 ```-decompose <min/max>``` - decomposes the image by taking the smallest/greatest channel of each pixel.<br>
 ```-desaturate``` - desaturates the image, converts RGB channel into HSL channels each divided by two.<br>
 ```-diffuse <n>``` - reduces to the n to the power of 3 colors with Floyd-Steinberg Error Diffusion.<br>
-```-gamma <level>``` - produces so called gamma correction on image with given level.<br>
+```-gamma <ratio>``` - produces gamma correction on image with given level.<br>
 ```-grayshade <number of shades>``` - grays the image determined by number of shades.<br>
 ```-invert``` - inverts RGB channels of the image.<br>
 ```-luminance <r> <g> <b>``` - luminances the image, takes each ratio separetaly for each channel.<br>
-```-pixelate <n>``` - cuts image into smaller chunks defined by \<n\>.<br>
+```-pixelate <chunk size>``` - cuts image into smaller chunks defined by chunk size.<br>
 ```-reduce <n>``` - reduces image colors to the n to the power of 3 colors.<br>
-```-singechannel <r/g/b>``` - grays the image by single chosen RGB channel.<br>
-```-solarise <below/above> <threshold>``` - solarises the image up/down to given threshold.<br>
+```-singechannel <r/g/b>``` - grays the image by chosen RGB channel.<br>
+```-solarise <threshold> <below/above>``` - solarises the image above/below to the given threshold.<br>
 <br>
 **Example:** ```image.png -blur 8 -luminance 0.2 0.5 0.3``` - image.png will be blurred with Gaussian Kernel 8x8 then luminanced.<br>
 ## List of Helpful Articles
