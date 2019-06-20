@@ -26,7 +26,7 @@ int (*contrast)(unsigned char**, unsigned, unsigned, int);							/*Contrast Conv
 int (*decompose)(unsigned char**, unsigned, unsigned, char*);						/*Grayscale Decomposition Conversion*/
 int (*desaturate)(unsigned char**, unsigned, unsigned);								/*Grayscale Desaturation Conversion*/
 int (*diffuse)(unsigned char**, unsigned, unsigned, unsigned);						/*Floyd-Steinberg Error Diffusion Conversion*/
-int (*gamma)(unsigned char**, unsigned, unsigned, double);							/*Gamma Conversion*/
+int (*__gamma)(unsigned char**, unsigned, unsigned, double);						/*Gamma Conversion*/
 int (*grayshade)(unsigned char**, unsigned, unsigned, unsigned);					/*Grayscale Shades Conversion*/
 int (*invert)(unsigned char**, unsigned, unsigned);									/*Inversion Algorithm*/
 int (*luminance)(unsigned char**, unsigned, unsigned, float, float, float);			/*Luminance Conversion*/
