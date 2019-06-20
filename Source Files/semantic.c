@@ -49,7 +49,8 @@ int pushToInterpreter(int index, int count, ...)
 	va_start(ap, count);
 	switch (index)
 	{
-		//case COMMAND_AVERAGE_INDEX:
+		case COMMAND_AVERAGE_INDEX:
+			break;
 		case COMMAND_BLUR_INDEX:
 			(*current)->ptrToStruct = (Blur*)malloc(sizeof(Blur));
 			((Blur*)(*current)->ptrToStruct)->asis = va_arg(ap, unsigned);
@@ -66,7 +67,8 @@ int pushToInterpreter(int index, int count, ...)
 			(*current)->ptrToStruct = (Decompose*)malloc(sizeof(Decompose));
 			((Decompose*)(*current)->ptrToStruct)->fname = va_arg(ap, char*);
 			break;
-		//case COMMAND_DESATURATE_INDEX:
+		case COMMAND_DESATURATE_INDEX:
+			break;
 		case COMMAND_DIFFUSE_INDEX:
 			(*current)->ptrToStruct = (Diffuse*)malloc(sizeof(Diffuse));
 			((Diffuse*)(*current)->ptrToStruct)->count = va_arg(ap, unsigned);
@@ -79,12 +81,13 @@ int pushToInterpreter(int index, int count, ...)
 			(*current)->ptrToStruct = (GrayShade*)malloc(sizeof(GrayShade));
 			((GrayShade*)(*current)->ptrToStruct)->count = va_arg(ap, unsigned);
 			break;
-		//case COMMAND_INVERT_INDEX:
+		case COMMAND_INVERT_INDEX:
+			break;
 		case COMMAND_LUMINANCE_INDEX:
 			(*current)->ptrToStruct = (Luminance*)malloc(sizeof(Luminance));
-			((Luminance*)(*current)->ptrToStruct)->red_ratio = va_arg(ap, float);
-			((Luminance*)(*current)->ptrToStruct)->green_ratio = va_arg(ap, float);
-			((Luminance*)(*current)->ptrToStruct)->blue_ratio = va_arg(ap, float);
+			((Luminance*)(*current)->ptrToStruct)->red_ratio = (float)va_arg(ap, double);
+			((Luminance*)(*current)->ptrToStruct)->green_ratio = (float)va_arg(ap, double);
+			((Luminance*)(*current)->ptrToStruct)->blue_ratio = (float)va_arg(ap, double);
 			break;
 		case COMMAND_PIXELATE_INDEX:
 			(*current)->ptrToStruct = (Pixelate*)malloc(sizeof(Pixelate));
@@ -330,17 +333,22 @@ int runInterpreter()
 
 	Node* ptr = gInterpreter.tree;
 	if (!escape)
-		while (ptr)
-		{
-			Node* nextPtr = ptr->next;
-			if (popFromInterpreter(&ptr))
+	{
+		if (!ptr)
+			escape = 1;
+		else
+			while (ptr)
 			{
-				printf("Warning: Killing interpreter state...\n");
-				escape = 1;
-				break;
+				Node* nextPtr = ptr->next;
+				if (popFromInterpreter(&ptr))
+				{
+					printf("Error: Killing interpreter state...\n");
+					escape = 1;
+					break;
+				}
+				ptr = nextPtr;
 			}
-			ptr = nextPtr;
-		}
+	}
 
 	if (escape)
 	{
@@ -350,8 +358,6 @@ int runInterpreter()
 			escapeFromInterpreter(&ptr);
 			ptr = nextPtr;
 		}
-
-		return 1;
 	}
 	else
 	{
@@ -360,9 +366,9 @@ int runInterpreter()
 			gInterpreter.width,
 			gInterpreter.height))
 			printf("Error: Process of saving image failed...\n");
-		destroy_image(&gInterpreter.image);
 	}
 
+	destroy_image(&gInterpreter.image);
 	free(gInterpreter.input);
 	if (!gInterpreter.inputAsOutput)
 		free(gInterpreter.output);
@@ -375,5 +381,5 @@ int runInterpreter()
 	gInterpreter.inputAsOutput = 0;
 	gInterpreter.exitState = 0;
 	gInterpreter.tree = NULL;
-	return 0;
+	return escape;
 }

@@ -10,7 +10,7 @@
 %union {
 	int ivalue;
 	float fvalue;
-	unsigned char cvalue;
+	char cvalue;
 	char* svalue;
 }
 
@@ -42,9 +42,9 @@ processing:
 	process ENDL {
 		printf("Starting interpreter process...\n");
 		if (runInterpreter())
-			printf("Error: Interpreter process failed...\n");
+			printf("Error: Interpreter process failed...\n\n");
 		else
-			printf("Succes: Interpreter process finished with success!\n");
+			printf("Success: Interpreter process finished with success!\n\n");
 	}
 	;
 
@@ -112,7 +112,7 @@ cmd_blur:
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_BLUR_INDEX, 1, (unsigned)arg);
 		else
-			printf("Error: Cannot execute Blur algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Blur algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 
@@ -138,6 +138,12 @@ cmd_decompose:
 		free($1);
 		pushToInterpreter(COMMAND_DECOMPOSE_INDEX, 1, (char*)$2);
 	}
+	| COMMAND_DECOMPOSE {
+		printf("Pushing %s state...\n", (char*)$1);
+		free($1);
+		char* ptr = NULL;
+		pushToInterpreter(COMMAND_DECOMPOSE_INDEX, 1, ptr);
+	}
 	;
 
 cmd_desaturate:
@@ -156,7 +162,7 @@ cmd_diffuse:
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_DIFFUSE_INDEX, 1, (unsigned)arg);
 		else
-			printf("Error: Cannot execute Diffuse algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Diffuse algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 
@@ -176,7 +182,7 @@ cmd_grayshade:
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_GRAYSHADE_INDEX, 1, (unsigned)arg);
 		else
-			printf("Error: Cannot execute Grayshade algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Grayshade algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 
@@ -190,9 +196,12 @@ cmd_invert:
 
 cmd_luminance:
 	COMMAND_LUMINANCE FLOAT FLOAT FLOAT {
-		printf("Pushing %s %f %f %f state...\n", (char*)$1, (float)$2, (float)$3, (float)$4);
+		float rf = (float)$2;
+		float gf = (float)$3;
+		float bf = (float)$4;
+		printf("Pushing %s %f %f %f state...\n", (char*)$1, rf, gf, bf);
 		free($1);
-		pushToInterpreter(COMMAND_LUMINANCE_INDEX, 3, (float)$2, (float)$3, (float)$4);
+		pushToInterpreter(COMMAND_LUMINANCE_INDEX, 3, rf, gf, bf);
 	}
 	;
 
@@ -204,7 +213,7 @@ cmd_pixelate:
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_PIXELATE_INDEX, 1, (unsigned)arg);
 		else
-			printf("Error: Cannot execute Pixelate algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Pixelate algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 		
@@ -216,7 +225,7 @@ cmd_reduce:
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_REDUCE_INDEX, 1, (unsigned)arg);
 		else
-			printf("Error: Cannot execute Reduce algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Reduce algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 
@@ -234,8 +243,20 @@ cmd_solarise:
 		free($1);
 		if (arg >= 0)
 			pushToInterpreter(COMMAND_SOLARISE_INDEX, 2, (unsigned)arg, (char*)$3);
+		else {
+			free((char*)$3);
+			printf("Error: Cannot execute Solarise algorithm because its argument is negative, skipping algorithm...\n");
+		}
+	}
+	| COMMAND_SOLARISE INT {
+		int arg = (int)$2;
+		printf("Pushing %s %d state...\n", (char*)$1, arg);
+		free($1);
+		char* ptr = NULL;
+		if (arg >= 0)
+			pushToInterpreter(COMMAND_SOLARISE_INDEX, 2, (unsigned)arg, ptr);
 		else
-			printf("Error: Cannot execute Solarise algorithm because its argument is negative...\n");
+			printf("Error: Cannot execute Solarise algorithm because its argument is negative, skipping algorithm...\n");
 	}
 	;
 %%

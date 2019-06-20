@@ -10,17 +10,17 @@
 #endif
 %}
 %option noyywrap
-WORD [a-zA-Z0-9]{2,}
+WORD [a-zA-Z0-9_]{2,}
 CHARACTER [a-zA-Z0-9]{1}
 FNAME ({WORD}\.png)|({CHARACTER}\.png)
 %%
 [ \t]			;
 \n				{ yylval.svalue = fix_strdup(yytext); return ENDL; }
-\-?[0-9]+			{ yylval.ivalue = atoi(yytext); return INT; }
-\-?[0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
+(\-)?[0-9]+			{ yylval.ivalue = atoi(yytext); return INT; }
+(\-)?[0-9]+\.[0-9]+	{ yylval.fvalue = (float)atof(yytext); return FLOAT; }
 {WORD}			{ yylval.svalue = fix_strdup(yytext); return STRING; }
 {FNAME}			{ yylval.svalue = fix_strdup(yytext); return FILENAME; }
-{CHARACTER}		{ yylval.cvalue = (char)atoi(yytext); return CHAR; }
+{CHARACTER}		{ yylval.cvalue = (char)*yytext; return CHAR; }
 \-average		{ yylval.svalue = fix_strdup(yytext); return COMMAND_AVERAGE; }
 \-blur			{ yylval.svalue = fix_strdup(yytext); return COMMAND_BLUR; }
 \-brighten		{ yylval.svalue = fix_strdup(yytext); return COMMAND_BRIGHTEN; }
@@ -47,3 +47,22 @@ FNAME ({WORD}\.png)|({CHARACTER}\.png)
 					yyterminate();
 				}
 %%
+
+void set_input_string(const char* in) {
+	yy_scan_string(in);
+}
+
+void end_lexical_scan(void) {
+	yy_delete_buffer(YY_CURRENT_BUFFER);
+}
+
+void start_scanning(const char* ptr)
+{
+	set_input_string(ptr);
+	yyparse();
+}
+
+void end_scanning()
+{
+	end_lexical_scan();
+}

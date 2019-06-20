@@ -238,12 +238,12 @@ int brighten(unsigned char** image, unsigned width, unsigned height, int level)
 
 	if (level < -0xFF)
 	{
-		printf("Warning: Min brightness level is -0xFF. Brightness level will be truncated...\n");
+		printf("Warning: Min brightness level is -255. Brightness level will be truncated...\n");
 		level = -0xFF;
 	}
 	else if (level > 0xFF)
 	{
-		printf("Warning: Max brightness level is 0xFF. Brightness level will be truncated...\n");
+		printf("Warning: Max brightness level is 255. Brightness level will be truncated...\n");
 		level = 0xFF;
 	}
 
@@ -267,12 +267,12 @@ int contrast(unsigned char** image, unsigned width, unsigned height, int level)
 
 	if (level < -0xFF)
 	{
-		printf("Warning: Min contrast level is -0xFF. Contrast level will be truncated...\n");
+		printf("Warning: Min contrast level is -255. Contrast level will be truncated...\n");
 		level = -0xFF;
 	}
 	else if (level > 0xFF)
 	{
-		printf("Warning: Max contrast level is 0xFF. Contrast level will be truncated...\n");
+		printf("Warning: Max contrast level is 255. Contrast level will be truncated...\n");
 		level = 0xFF;
 	}
 
@@ -304,7 +304,7 @@ int decompose(unsigned char** image, unsigned width, unsigned height, char* fnam
 	unsigned char(*fun)(unsigned char*) = minRGB;
 	if (!fname)
 		printf("Warning: Function name for Decompose algorithm is not set... choosing min function\n");
-	if (!strcmp(fname, "max"))
+	else if (!strcmp(fname, "max"))
 		fun = maxRGB;
 	else if (strcmp(fname, "min"))
 		printf("Warning: Function name for Decompose algorithm is not properly set... choosing min function\n");
@@ -462,7 +462,7 @@ int grayshade(unsigned char** image, unsigned width, unsigned height, unsigned c
 	}
 	else if (count > 0xFF)
 	{
-		printf("Warning: Max number of shades for Grayshade algorithm is 0xFF, reducing number of shades...\n");
+		printf("Warning: Max number of shades for Grayshade algorithm is 255, reducing number of shades...\n");
 		count = 0xFF;
 	}
 
@@ -664,7 +664,7 @@ int solarise(unsigned char** image, unsigned width, unsigned height, unsigned th
 	int(*fun)(unsigned char*, unsigned char*) = below_threshold;
 	if (!fname)
 		printf("Warning: Function name for Solarise algorithm is not set... choosing below function\n");
-	if (!strcmp(fname, "above"))
+	else if (!strcmp(fname, "above"))
 		fun = above_threshold;
 	else if (strcmp(fname, "below"))
 		printf("Warning: Function name for Solarise algorithm is not properly set... choosing below function\n");
