@@ -46,9 +46,6 @@
     <ClCompile Include="Source Files\image.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\solarisation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\semantic.c">
       <Filter>Source Files</Filter>
     </ClCompile>

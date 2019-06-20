@@ -142,7 +142,6 @@
     <ClCompile Include="Source Files\lodepng.c" />
     <ClCompile Include="Source Files\main.c" />
     <ClCompile Include="Source Files\semantic.c" />
-    <ClCompile Include="Source Files\solarisation.c" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Bison Flex\lexer.l">
