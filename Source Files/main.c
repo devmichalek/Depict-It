@@ -33,6 +33,8 @@ int main(int argc, char** argv)
 		*(h++) = '\n';
 		*h = '\0';
 
+		void start_scanning(const char*);
+		void end_scanning();
 		start_scanning(huge_str);
 		end_scanning();
 		free(huge_str);

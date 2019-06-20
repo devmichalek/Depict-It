@@ -421,7 +421,7 @@ int diffuse(unsigned char** image, unsigned width, unsigned height, unsigned cou
 	return 0;
 }
 
-int __gamma(unsigned char** image, unsigned width, unsigned height, double ratio)
+int gammaconv(unsigned char** image, unsigned width, unsigned height, double ratio)
 {	/*Arguments: image, width, height, gamma ratio*/
 	if (quick_image_check(*image, width, height))
 		return 1;
@@ -843,7 +843,7 @@ int gamma_test(const char* filename)
 
 	if (!load_image(filename, &image, &width, &height))
 	{
-		__gamma(&image, width, height, 0.25);
+		gammaconv(&image, width, height, 0.25);
 		char buffer[1024];
 		sprintf(buffer, "gamma_0_25%s", filename);
 		save_image(buffer, image, width, height);
@@ -852,7 +852,7 @@ int gamma_test(const char* filename)
 
 	if (!load_image(filename, &image, &width, &height))
 	{
-		__gamma(&image, width, height, 2.0);
+		gammaconv(&image, width, height, 2.0);
 		char buffer[1024];
 		sprintf(buffer, "gamma_2_00_%s", filename);
 		save_image(buffer, image, width, height);
@@ -1044,7 +1044,7 @@ const struct Commands LibCommands = {
 	.decompose = decompose,
 	.desaturate = desaturate,
 	.diffuse = diffuse,
-	.__gamma = __gamma,
+	.gammaconv = gammaconv,
 	.grayshade = grayshade,
 	.invert = invert,
 	.luminance = luminance,

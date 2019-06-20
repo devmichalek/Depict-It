@@ -202,7 +202,7 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_GAMMA_INDEX:
-			if (LibCommands.__gamma(&gInterpreter.image,
+			if (LibCommands.gammaconv(&gInterpreter.image,
 				gInterpreter.width,
 				gInterpreter.height,
 				((Gamma*)(*node)->ptrToStruct)->ratio))
