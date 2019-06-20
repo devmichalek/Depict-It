@@ -31,8 +31,7 @@
 [Stack Overflow Gaussian Kernel Question](https://stackoverflow.com/questions/8204645/implementing-gaussian-blur-how-to-calculate-convolution-matrix-kernel?noredirect=1&lq=1)<br>
 
 ### Download & Other Stuff
-**Quick Download**<br>
-[Windows 32-bit](https://drive.google.com/file/d/1wyyEONVl6dDCPuGYEisqbPVoYZkxizhw/view?usp=sharing)<br>
-[Windows 64-bit](https://drive.google.com/file/d/1vqi_KwDD3qkyD0s-7CD6nSvdfpYu4eR1/view?usp=sharing)<br>
+[Download for Windows 32-bit](https://drive.google.com/file/d/1wyyEONVl6dDCPuGYEisqbPVoYZkxizhw/view?usp=sharing)<br>
+[Download for Windows 64-bit](https://drive.google.com/file/d/1vqi_KwDD3qkyD0s-7CD6nSvdfpYu4eR1/view?usp=sharing)<br>
 **Makefile (Linux)**<br>
 
