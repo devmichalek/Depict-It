@@ -99,7 +99,7 @@ int pushToInterpreter(int index, int count, ...)
 			break;
 		case COMMAND_SINGLECHANNEL_INDEX:
 			(*current)->ptrToStruct = (SingleChannel*)malloc(sizeof(SingleChannel));
-			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, char);
+			((SingleChannel*)(*current)->ptrToStruct)->channel = va_arg(ap, int);
 			break;
 		case COMMAND_SOLARISE_INDEX:
 			(*current)->ptrToStruct = (Solarise*)malloc(sizeof(Solarise));

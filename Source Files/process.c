@@ -713,7 +713,7 @@ int blur_test(const char* filename)
 		if (!load_image(filename, &image, &width, &height))
 		{
 			blur(&image, width, height, i);
-			sprintf(buffer, "gaussian_blur_xy%d_%s\0", i, filename);
+			sprintf(buffer, "gaussian_blur_xy%d_%s", i, filename);
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
@@ -733,7 +733,7 @@ int brighten_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		brighten(&image, width, height, 64);
-		sprintf(buffer, "brightned_%s\0", filename);
+		sprintf(buffer, "brightned_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -741,7 +741,7 @@ int brighten_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		brighten(&image, width, height, -64);
-		sprintf(buffer, "darkened_%s\0", filename);
+		sprintf(buffer, "darkened_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -759,7 +759,7 @@ int contrast_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		contrast(&image, width, height, 128);
-		sprintf(buffer, "contrast_plus_%s\0", filename);
+		sprintf(buffer, "contrast_plus_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -768,7 +768,7 @@ int contrast_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		contrast(&image, width, height, -128);
-		sprintf(buffer, "contrast_minus_%s\0", filename);
+		sprintf(buffer, "contrast_minus_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -825,7 +825,7 @@ int diffuse_test(const char* filename)
 		if (!load_image(filename, &image, &width, &height))
 		{
 			diffuse(&image, width, height, i);
-			sprintf(buffer, "%d_colors_e_diff.png\0", (int)pow(i, 3));
+			sprintf(buffer, "%d_colors_e_diff.png", (int)pow(i, 3));
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
@@ -845,7 +845,7 @@ int gamma_test(const char* filename)
 	{
 		__gamma(&image, width, height, 0.25);
 		char buffer[1024];
-		sprintf(buffer, "gamma_0_25%s\0", filename);
+		sprintf(buffer, "gamma_0_25%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -854,7 +854,7 @@ int gamma_test(const char* filename)
 	{
 		__gamma(&image, width, height, 2.0);
 		char buffer[1024];
-		sprintf(buffer, "gamma_2_00_%s\0", filename);
+		sprintf(buffer, "gamma_2_00_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -893,7 +893,7 @@ int invert_test(const char* filename)
 	{
 		invert(&image, width, height);
 		char buffer[1024];
-		sprintf(buffer, "inverted_%s\0", filename);
+		sprintf(buffer, "inverted_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -934,7 +934,7 @@ int pixelate_test(const char* filename)
 		if (!load_image(filename, &image, &width, &height))
 		{
 			pixelate(&image, width, height, i);
-			sprintf(buffer, "pixelate_%d_%s\0", i, filename);
+			sprintf(buffer, "pixelate_%d_%s", i, filename);
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
@@ -956,7 +956,7 @@ int reduce_test(const char* filename)
 		if (!load_image(filename, &image, &width, &height))
 		{
 			reduce(&image, width, height, i);
-			sprintf(buffer, "%d_colors.png\0", (int)pow(i, 3));
+			sprintf(buffer, "%d_colors.png", (int)pow(i, 3));
 			save_image(buffer, image, width, height);
 			destroy_image(&image);
 		}
@@ -1006,7 +1006,7 @@ int solarise_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		solarise(&image, width, height, 0xFF / 2, "below");
-		sprintf(buffer, "solarised_below_%s\0", filename);
+		sprintf(buffer, "solarised_below_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -1015,7 +1015,7 @@ int solarise_test(const char* filename)
 	if (!load_image(filename, &image, &width, &height))
 	{
 		solarise(&image, width, height, 0xFF / 2, "above");
-		sprintf(buffer, "solarised_above_%s\0", filename);
+		sprintf(buffer, "solarised_above_%s", filename);
 		save_image(buffer, image, width, height);
 		destroy_image(&image);
 	}
@@ -1037,7 +1037,7 @@ const struct Commands LibCommands = {
 	.generate_kernel = generate_kernel,
 	.quick_image_check = quick_image_check,
 
-	.average = average_test,
+	.average = average,
 	.blur = blur,
 	.brighten = brighten,
 	.contrast = contrast,
