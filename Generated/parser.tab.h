@@ -79,7 +79,7 @@ typedef union YYSTYPE
 
 	int ivalue;
 	float fvalue;
-	unsigned char cvalue;
+	char cvalue;
 	char* svalue;
 
 
