@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 /*--- Support Functions ---*/
 unsigned char* red(unsigned char* pixel)
 {	/*Extract Red from RGB*/
@@ -1021,3 +1022,50 @@ int solarise_test(const char* filename)
 
 	return 0;
 }
+
+const struct Commands LibCommands = {
+	.red = red,
+	.green = green,
+	.blue = blue,
+	.minRGB = minRGB,
+	.maxRGB = maxRGB,
+	.below_threshold = below_threshold,
+	.above_threshold = above_threshold,
+	.truncate = truncate,
+	.get_pixel = get_pixel,
+	.find_closest_color = find_closest_color,
+	.generate_kernel = generate_kernel,
+	.quick_image_check = quick_image_check,
+
+	.average = average_test,
+	.blur = blur,
+	.brighten = brighten,
+	.contrast = contrast,
+	.decompose = decompose,
+	.desaturate = desaturate,
+	.diffuse = diffuse,
+	.gamma = gamma,
+	.grayshade = grayshade,
+	.invert = invert,
+	.luminance = luminance,
+	.pixelate = pixelate,
+	.reduce = reduce,
+	.singlechannel = singlechannel,
+	.solarise = solarise,
+
+	.average_test = average_test,
+	.blur_test = blur_test,
+	.brighten_test = brighten_test,
+	.contrast_test = contrast_test,
+	.decompose_test = decompose_test,
+	.desaturate_test = desaturate_test,
+	.diffuse_test = diffuse_test,
+	.gamma_test = gamma_test,
+	.grayshade_test = grayshade_test,
+	.invert_test = invert_test,
+	.luminance_test = luminance_test,
+	.pixelate_test = pixelate_test,
+	.reduce_test = reduce_test,
+	.singlechannel_test = singlechannel_test,
+	.solarise_test = solarise_test
+};

@@ -121,7 +121,9 @@ int popFromInterpreter(Node** node)
 	switch ((*node)->index)
 	{
 		case COMMAND_AVERAGE_INDEX:
-			if (average(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			if (LibCommands.average(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height))
 			{
 				printf("Error: Average algorithm failed...\n");
 				return 1;
@@ -129,7 +131,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_BLUR_INDEX:
-			if (blur(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Blur*)(*node)->ptrToStruct)->asis))
+			if (LibCommands.blur(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Blur*)(*node)->ptrToStruct)->asis))
 			{
 				printf("Error: Blur algorithm failed...\n");
 				return 1;
@@ -138,7 +143,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_BRIGHTEN_INDEX:
-			if (brighten(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Brighten*)(*node)->ptrToStruct)->level))
+			if (LibCommands.brighten(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Brighten*)(*node)->ptrToStruct)->level))
 			{
 				printf("Error: Brighten algorithm failed...\n");
 				return 1;
@@ -147,7 +155,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_CONTRAST_INDEX:
-			if (contrast(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Contrast*)(*node)->ptrToStruct)->level))
+			if (LibCommands.contrast(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Contrast*)(*node)->ptrToStruct)->level))
 			{
 				printf("Error: Contrast algorithm failed...\n");
 				return 1;
@@ -156,7 +167,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_DECOMPOSE_INDEX:
-			if (decompose(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Decompose*)(*node)->ptrToStruct)->fname))
+			if (LibCommands.decompose(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Decompose*)(*node)->ptrToStruct)->fname))
 			{
 				printf("Error: Decompose algorithm failed...\n");
 				return 1;
@@ -166,7 +180,9 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_DESATURATE_INDEX:
-			if (desaturate(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			if (LibCommands.desaturate(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height))
 			{
 				printf("Error: Desaturate algorithm failed...\n");
 				return 1;
@@ -174,7 +190,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_DIFFUSE_INDEX:
-			if (diffuse(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Diffuse*)(*node)->ptrToStruct)->count))
+			if (LibCommands.diffuse(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Diffuse*)(*node)->ptrToStruct)->count))
 			{
 				printf("Error: Diffuse algorithm failed...\n");
 				return 1;
@@ -183,7 +202,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_GAMMA_INDEX:
-			if (gamma(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Gamma*)(*node)->ptrToStruct)->ratio))
+			if (LibCommands.gamma(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Gamma*)(*node)->ptrToStruct)->ratio))
 			{
 				printf("Error: Gamma algorithm failed...\n");
 				return 1;
@@ -192,7 +214,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_GRAYSHADE_INDEX:
-			if (grayshade(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((GrayShade*)(*node)->ptrToStruct)->count))
+			if (LibCommands.grayshade(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((GrayShade*)(*node)->ptrToStruct)->count))
 			{
 				printf("Error: Grayshade algorithm failed...\n");
 				return 1;
@@ -201,7 +226,9 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_INVERT_INDEX:
-			if (invert(&gInterpreter.image, gInterpreter.width, gInterpreter.height))
+			if (LibCommands.invert(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height))
 			{
 				printf("Error: Invert algorithm failed...\n");
 				return 1;
@@ -209,7 +236,7 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_LUMINANCE_INDEX:
-			if (luminance(	&gInterpreter.image,
+			if (LibCommands.luminance(	&gInterpreter.image,
 							gInterpreter.width,
 							gInterpreter.height,
 							((Luminance*)(*node)->ptrToStruct)->red_ratio,
@@ -223,7 +250,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_PIXELATE_INDEX:
-			if (pixelate(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Pixelate*)(*node)->ptrToStruct)->pixel_size))
+			if (LibCommands.pixelate(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Pixelate*)(*node)->ptrToStruct)->pixel_size))
 			{
 				printf("Error: Pixelate algorithm failed...\n");
 				return 1;
@@ -232,7 +262,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_REDUCE_INDEX:
-			if (reduce(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((Reduce*)(*node)->ptrToStruct)->count))
+			if (LibCommands.reduce(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((Reduce*)(*node)->ptrToStruct)->count))
 			{
 				printf("Error: Reduce algorithm failed...\n");
 				return 1;
@@ -241,7 +274,10 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_SINGLECHANNEL_INDEX:
-			if (singlechannel(&gInterpreter.image, gInterpreter.width, gInterpreter.height, ((SingleChannel*)(*node)->ptrToStruct)->channel))
+			if (LibCommands.singlechannel(&gInterpreter.image,
+				gInterpreter.width,
+				gInterpreter.height,
+				((SingleChannel*)(*node)->ptrToStruct)->channel))
 			{
 				printf("Error: Singlechannel algorithm failed...\n");
 				return 1;
@@ -250,7 +286,7 @@ int popFromInterpreter(Node** node)
 			break;
 
 		case COMMAND_SOLARISE_INDEX:
-			if (solarise(	&gInterpreter.image,
+			if (LibCommands.solarise(	&gInterpreter.image,
 							gInterpreter.width,
 							gInterpreter.height,
 							((Solarise*)(*node)->ptrToStruct)->threshold,
