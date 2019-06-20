@@ -16,7 +16,7 @@
 ```-reduce <n>``` - reduces image colors to the n to the power of 3 colors.<br>
 ```-singechannel <r/g/b>``` - grays the image by chosen RGB channel.<br>
 ```-solarise <threshold> <below/above>``` - solarises the image above/below to the given threshold.<br>
-<br>
+
 ### Depict-It - Syntax & Examples:
 ```<executable name> <input.png> <commands> <output.png>``` - notice that *output.png* is optional but other arguments are required for program to run correctly without errors.<br>
 ```image.png -blur 8 -luminance 0.2 0.5 0.3``` - *image.png* will be blurred with Gaussian Kernel 8x8 then luminanced.<br>
